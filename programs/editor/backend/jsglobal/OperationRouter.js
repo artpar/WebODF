@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global define, runtime, core, ops*/
+/*global define, runtime, webodfcore, ops*/
 
 define("webodf/editor/backend/jsglobal/OperationRouter", [], function () {
     "use strict";
@@ -37,8 +37,8 @@ define("webodf/editor/backend/jsglobal/OperationRouter", [], function () {
         EVENT_HASSESSIONHOSTCONNECTIONCHANGED =   "hasSessionHostConnectionChanged";
 
     runtime.loadClass("ops.OperationTransformer");
-    runtime.loadClass("core.EventNotifier");
-    runtime.loadClass("core.Task");
+    runtime.loadClass("webodfcore.EventNotifier");
+    runtime.loadClass("webodfcore.Task");
 
     /**
      * @constructor
@@ -46,7 +46,7 @@ define("webodf/editor/backend/jsglobal/OperationRouter", [], function () {
      */
     return function JsGlobalOperationRouter(sessionId, memberId, server, errorCallback) {
 
-        var events = new core.EventNotifier([
+        var events = new webodfcore.EventNotifier([
                 ops.OperationRouter.signalProcessingBatchStart,
                 ops.OperationRouter.signalProcessingBatchEnd,
                 EVENT_HASLOCALUNSYNCEDOPERATIONSCHANGED,
@@ -339,7 +339,7 @@ define("webodf/editor/backend/jsglobal/OperationRouter", [], function () {
         };
 
         function init() {
-            syncTask = core.Task.createTimeoutTask(synchronizeWithServer, 100);
+            syncTask = webodfcore.Task.createTimeoutTask(synchronizeWithServer, 100);
         }
         init();
     };

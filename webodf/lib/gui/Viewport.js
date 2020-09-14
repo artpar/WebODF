@@ -39,7 +39,7 @@ gui.Viewport = function Viewport() { "use strict"; };
  * rect will be shown in the view as possible whilst ensuring the top is still
  * on screen. Similar logic applies if the clientRect width is too large.
  *
- * @param {?core.SimpleClientRect} clientRect
+ * @param {?webodfcore.SimpleClientRect} clientRect
  * @param {!boolean=} alignWithTop Align the clientRect to the top of the viewport. If unspecified or false, the
  *  view will scroll only as much as required to bring the clientRect into view.
  * @return {undefined}

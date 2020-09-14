@@ -36,7 +36,7 @@ gui.StepInfo = function() { "use strict"; };
  * whether the text block is right-to-left or left to right.
  *
  * For left-to-right languages, this maps onto
- * core.StepDirection as:
+ * webodfcore.StepDirection as:
  *  LEFT_TO_RIGHT = NEXT
  *  RIGHT_TO_LEFT = PREV
  *
@@ -48,7 +48,7 @@ gui.StepInfo.VisualDirection = {
 };
 
 /**
- * @type {!core.StepIterator.StepSnapshot}
+ * @type {!webodfcore.StepIterator.StepSnapshot}
  */
 gui.StepInfo.prototype.token;
 
@@ -65,7 +65,7 @@ gui.StepInfo.prototype.offset = function() { "use strict"; };
 /**
  * The direction of iteration from previous to next rect.
  *
- * @type {!core.StepDirection}
+ * @type {!webodfcore.StepDirection}
  */
 gui.StepInfo.prototype.direction;
 
@@ -88,7 +88,7 @@ gui.VisualStepScanner = function() { "use strict"; };
 
 /**
  * Token for the last step accepted by this scanner
- * @type {?core.StepIterator.StepSnapshot|undefined}
+ * @type {?webodfcore.StepIterator.StepSnapshot|undefined}
  */
 gui.VisualStepScanner.prototype.token;
 

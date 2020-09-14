@@ -22,13 +22,13 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, gui, ops, odf, core*/
+/*global runtime, gui, ops, odf, webodfcore*/
 
 /**
  * Provides a method to paste text at the current cursor
  * position, and processes the input string to understand
  * special structuring such as paragraph splits.
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!ops.Session} session
  * @param {!gui.SessionConstraints} sessionConstraints
  * @param {!gui.SessionContext} sessionContext
@@ -43,7 +43,7 @@ gui.PasteController = function PasteController(session, sessionConstraints, sess
         /**@const*/
         textns = odf.Namespaces.textns,
         /**@const*/
-        NEXT = core.StepDirection.NEXT,
+        NEXT = webodfcore.StepDirection.NEXT,
         odfUtils = odf.OdfUtils;
 
     /**

@@ -102,7 +102,7 @@ After the move it should be checked if the move made sense, i.e. if the caret is
 Determining if a caret is in a legal position is done with a special class.
 
 The current players:
- - core.Cursor : insert a caret in the text if the selection calls for it
+ - webodfcore.Cursor : insert a caret in the text if the selection calls for it
  - gui.XMLEdit : 
  - ...: moving of the cursor, taking into account skipping over/ignoring the cursor itself and also taking into account that the caret in an editable text must be moved by the browser
 
@@ -129,7 +129,7 @@ selection/cursor position is the 'real' thing, the cursor (visible or not) is ju
 
 The cursor must appear invisible to the normal dom functions, this is tricky because a cursor may split a text. This is however a separate concern.
 
-So there should be an event handler that translates mouse and key events into api calls. There already is moving of the cursor/selection on mouse events in Firefox and WebKit so only keyboard events need to be handled. So core.Cursor.updateToSelection should work ok for mouse events.
+So there should be an event handler that translates mouse and key events into api calls. There already is moving of the cursor/selection on mouse events in Firefox and WebKit so only keyboard events need to be handled. So webodfcore.Cursor.updateToSelection should work ok for mouse events.
 
 Should we re-evaluate the use of JQuery? NO! first add editing functions to WebODF.
 

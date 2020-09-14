@@ -1,45 +1,5 @@
 {
-    "core.Base64Tests": [
-        "core.Base64",
-        "core.UnitTester"
-    ],
-    "core.CursorTests": [
-        "core.Cursor",
-        "core.UnitTester"
-    ],
-    "core.DomUtilsTests": [
-        "core.DomUtils",
-        "core.UnitTester"
-    ],
-    "core.EventSubscriptionsTests": [
-        "core.EventNotifier",
-        "core.EventSubscriptions",
-        "core.Task",
-        "core.UnitTester"
-    ],
-    "core.PositionIteratorTests": [
-        "core.PositionIterator",
-        "core.UnitTester"
-    ],
-    "core.RuntimeTests": [
-        "core.UnitTester"
-    ],
-    "core.StepIteratorTests": [
-        "core.PositionFilter",
-        "core.PositionIterator",
-        "core.StepIterator",
-        "core.UnitTester"
-    ],
-    "core.UnitTester": [
-    ],
-    "core.ZipTests": [
-        "core.UnitTester",
-        "core.Zip"
-    ],
     "gui.DirectFormattingControllerTests": [
-        "core.DomUtils",
-        "core.UnitTester",
-        "core.Utils",
         "gui.DirectFormattingController",
         "gui.SessionConstraints",
         "gui.SessionContext",
@@ -51,19 +11,21 @@
         "ops.Document",
         "ops.OdtCursor",
         "ops.OdtDocument",
-        "ops.Session"
+        "ops.Session",
+        "webodfcore.DomUtils",
+        "webodfcore.UnitTester",
+        "webodfcore.Utils"
     ],
     "gui.GuiStepUtilsTests": [
-        "core.PositionFilter",
-        "core.PositionIterator",
-        "core.StepIterator",
-        "core.UnitTester",
-        "core.enums",
         "gui.GuiStepUtils",
-        "gui.VisualStepScanner"
+        "gui.VisualStepScanner",
+        "webodfcore.PositionFilter",
+        "webodfcore.PositionIterator",
+        "webodfcore.StepIterator",
+        "webodfcore.UnitTester",
+        "webodfcore.enums"
     ],
     "gui.ImageControllerTests": [
-        "core.UnitTester",
         "gui.ImageController",
         "gui.SessionConstraints",
         "gui.SessionContext",
@@ -75,10 +37,10 @@
         "ops.OdtCursor",
         "ops.OdtDocument",
         "ops.Session",
+        "webodfcore.UnitTester",
         "xmldom.LSSerializer"
     ],
     "gui.MetadataControllerTests": [
-        "core.UnitTester",
         "gui.MetadataController",
         "odf.Namespaces",
         "odf.OdfCanvas",
@@ -90,27 +52,26 @@
         "ops.Operation",
         "ops.OperationFactory",
         "ops.Session",
+        "webodfcore.UnitTester",
         "xmldom.LSSerializer"
     ],
     "gui.SelectionControllerTests": [
-        "core.DomUtils",
-        "core.LoopWatchDog",
-        "core.UnitTester",
         "gui.SelectionController",
         "odf.Namespaces",
         "odf.OdfCanvas",
         "ops.OdtCursor",
         "ops.OdtDocument",
-        "ops.Session"
+        "ops.Session",
+        "webodfcore.DomUtils",
+        "webodfcore.LoopWatchDog",
+        "webodfcore.UnitTester"
     ],
     "gui.StyleSummaryTests": [
-        "core.UnitTester",
         "gui.StyleSummary",
-        "odf.Formatting"
+        "odf.Formatting",
+        "webodfcore.UnitTester"
     ],
     "gui.TextControllerTests": [
-        "core.UnitTester",
-        "core.Utils",
         "gui.SessionConstraints",
         "gui.SessionContext",
         "gui.TextController",
@@ -121,124 +82,124 @@
         "ops.OdtDocument",
         "ops.Operation",
         "ops.Session",
+        "webodfcore.UnitTester",
+        "webodfcore.Utils",
         "xmldom.LSSerializer"
     ],
     "gui.TrivialUndoManagerTests": [
-        "core.PositionFilterChain",
-        "core.UnitTester",
         "gui.TrivialUndoManager",
         "gui.UndoManager",
         "ops.Document",
         "ops.OpAddCursor",
         "ops.OpInsertText",
-        "ops.OpMoveCursor"
+        "ops.OpMoveCursor",
+        "webodfcore.PositionFilterChain",
+        "webodfcore.UnitTester"
     ],
     "gui.UndoStateRulesTests": [
-        "core.UnitTester",
         "gui.UndoStateRules",
         "ops.OpApplyDirectStyling",
         "ops.OpInsertText",
         "ops.OpMoveCursor",
         "ops.OpRemoveText",
         "ops.OpSplitParagraph",
-        "ops.Operation"
+        "ops.Operation",
+        "webodfcore.UnitTester"
     ],
     "odf.FormattingTests": [
-        "core.CSSUnits",
-        "core.UnitTester",
         "odf.Formatting",
-        "odf.Namespaces"
+        "odf.Namespaces",
+        "webodfcore.CSSUnits",
+        "webodfcore.UnitTester"
     ],
     "odf.LayoutTests": [
-        "core.UnitTester",
         "odf.Namespaces",
         "odf.OdfCanvas",
         "odf.OdfContainer",
         "odf.OdfUtils",
+        "webodfcore.UnitTester",
         "xmldom.XPath"
     ],
     "odf.ListStyleToCssTests": [
-        "core.UnitTester",
         "odf.ListStylesToCss",
         "odf.Namespaces",
-        "odf.StyleTree"
+        "odf.StyleTree",
+        "webodfcore.UnitTester"
     ],
     "odf.MaliciousDocumentTests": [
-        "core.Async",
-        "core.UnitTester",
-        "odf.OdfContainer"
+        "odf.OdfContainer",
+        "webodfcore.Async",
+        "webodfcore.UnitTester"
     ],
     "odf.ObjectNameGeneratorTests": [
-        "core.UnitTester",
         "odf.ObjectNameGenerator",
-        "odf.OdfContainer"
+        "odf.OdfContainer",
+        "webodfcore.UnitTester"
     ],
     "odf.OdfContainerSafetyTests": [
-        "core.UnitTester",
-        "odf.OdfContainer"
+        "odf.OdfContainer",
+        "webodfcore.UnitTester"
     ],
     "odf.OdfContainerTests": [
-        "core.UnitTester",
-        "core.Zip",
         "odf.Namespaces",
         "odf.OdfContainer",
+        "webodfcore.UnitTester",
+        "webodfcore.Zip",
         "xmldom.LSSerializer"
     ],
     "odf.OdfUtilsTests": [
-        "core.UnitTester",
-        "odf.OdfUtils"
+        "odf.OdfUtils",
+        "webodfcore.UnitTester"
     ],
     "odf.StyleCacheTests": [
-        "core.UnitTester",
         "odf.OdfContainer",
-        "odf.StyleCache"
+        "odf.StyleCache",
+        "webodfcore.UnitTester"
     ],
     "odf.StyleInfoTests": [
-        "core.UnitTester",
-        "odf.StyleInfo"
+        "odf.StyleInfo",
+        "webodfcore.UnitTester"
     ],
     "odf.StyleParseUtilsTests": [
-        "core.UnitTester",
-        "odf.StyleParseUtils"
+        "odf.StyleParseUtils",
+        "webodfcore.UnitTester"
     ],
     "odf.TextStyleApplicatorTests": [
-        "core.DomUtils",
-        "core.UnitTester",
         "odf.Formatting",
         "odf.ObjectNameGenerator",
         "odf.OdfContainer",
         "odf.OdfUtils",
-        "odf.TextStyleApplicator"
+        "odf.TextStyleApplicator",
+        "webodfcore.DomUtils",
+        "webodfcore.UnitTester"
     ],
     "ops.OdtDocumentTests": [
-        "core.UnitTester",
-        "core.enums",
         "odf.Namespaces",
         "odf.OdfCanvas",
         "odf.OdfNodeFilter",
         "ops.Member",
         "ops.OdtCursor",
         "ops.OdtDocument",
+        "webodfcore.UnitTester",
+        "webodfcore.enums",
         "xmldom.LSSerializer",
         "xmldom.LSSerializerFilter"
     ],
     "ops.OdtStepsTranslatorTests": [
-        "core.DomUtils",
-        "core.PositionFilter",
-        "core.PositionIterator",
-        "core.UnitTester",
-        "core.enums",
         "gui.OdfTextBodyNodeFilter",
         "odf.Namespaces",
         "ops.OdtStepsTranslator",
-        "ops.TextPositionFilter"
+        "ops.TextPositionFilter",
+        "webodfcore.DomUtils",
+        "webodfcore.PositionFilter",
+        "webodfcore.PositionIterator",
+        "webodfcore.UnitTester",
+        "webodfcore.enums"
     ],
     "ops.OperationTestHelper": [
         "odf.OdfUtils"
     ],
     "ops.OperationTests": [
-        "core.UnitTester",
-        "core.enums",
         "odf.Namespaces",
         "odf.OdfCanvas",
         "odf.OdfContainer",
@@ -247,16 +208,17 @@
         "ops.OdtDocument",
         "ops.OperationFactory",
         "ops.OperationTestHelper",
+        "webodfcore.UnitTester",
+        "webodfcore.enums",
         "xmldom.LSSerializer"
     ],
     "ops.SessionTests": [
-        "core.UnitTester",
         "odf.OdfCanvas",
         "odf.OdfContainer",
-        "ops.Session"
+        "ops.Session",
+        "webodfcore.UnitTester"
     ],
     "ops.TransformationTests": [
-        "core.UnitTester",
         "odf.Namespaces",
         "odf.OdfCanvas",
         "odf.OdfContainer",
@@ -266,20 +228,58 @@
         "ops.OperationFactory",
         "ops.OperationTestHelper",
         "ops.OperationTransformer",
+        "webodfcore.UnitTester",
         "xmldom.LSSerializer"
     ],
     "ops.TransformerTests": [
-        "core.UnitTester",
         "odf.OdfCanvas",
-        "ops.OperationTransformer"
+        "ops.OperationTransformer",
+        "webodfcore.UnitTester"
+    ],
+    "webodfcore.Base64Tests": [
+        "webodfcore.Base64",
+        "webodfcore.UnitTester"
+    ],
+    "webodfcore.CursorTests": [
+        "webodfcore.Cursor",
+        "webodfcore.UnitTester"
+    ],
+    "webodfcore.DomUtilsTests": [
+        "webodfcore.DomUtils",
+        "webodfcore.UnitTester"
+    ],
+    "webodfcore.EventSubscriptionsTests": [
+        "webodfcore.EventNotifier",
+        "webodfcore.EventSubscriptions",
+        "webodfcore.Task",
+        "webodfcore.UnitTester"
+    ],
+    "webodfcore.PositionIteratorTests": [
+        "webodfcore.PositionIterator",
+        "webodfcore.UnitTester"
+    ],
+    "webodfcore.RuntimeTests": [
+        "webodfcore.UnitTester"
+    ],
+    "webodfcore.StepIteratorTests": [
+        "webodfcore.PositionFilter",
+        "webodfcore.PositionIterator",
+        "webodfcore.StepIterator",
+        "webodfcore.UnitTester"
+    ],
+    "webodfcore.UnitTester": [
+    ],
+    "webodfcore.ZipTests": [
+        "webodfcore.UnitTester",
+        "webodfcore.Zip"
     ],
     "xmldom.LSSerializerTests": [
-        "core.UnitTester",
+        "webodfcore.UnitTester",
         "xmldom.LSSerializer"
     ],
     "xmldom.XPathTests": [
-        "core.UnitTester",
         "odf.Namespaces",
+        "webodfcore.UnitTester",
         "xmldom.XPath"
     ]
 }

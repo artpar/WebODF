@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, xmldom, odf, XMLSerializer*/
+/*global runtime, webodfcore, xmldom, odf, XMLSerializer*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 xmldom.XPathTests = function XPathTests(runner) {
     "use strict";

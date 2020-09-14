@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, ops, Node, NodeFilter, xmldom*/
+/*global runtime, webodfcore, gui, odf, ops, Node, NodeFilter, xmldom*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 gui.TextControllerTests = function TextControllerTests(runner) {
     "use strict";
@@ -35,7 +35,7 @@ gui.TextControllerTests = function TextControllerTests(runner) {
         t,
         testarea,
         officens = odf.Namespaces.officens,
-        utils = new core.Utils(),
+        utils = new webodfcore.Utils(),
         inputMemberId = "Joe";
 
     /**
@@ -114,7 +114,7 @@ gui.TextControllerTests = function TextControllerTests(runner) {
             range;
 
         xml = xml.replace("[", "<test:start/>").replace("]", "<test:end/>");
-        doc = core.UnitTest.createOdtDocument("<office:text>" + xml + "</office:text>", namespaceMap);
+        doc = webodfcore.UnitTest.createOdtDocument("<office:text>" + xml + "</office:text>", namespaceMap);
         node = /**@type{!Element}*/(domDocument.importNode(doc.documentElement, true));
         testarea.appendChild(node);
 
@@ -153,11 +153,11 @@ gui.TextControllerTests = function TextControllerTests(runner) {
     }
 
     this.setUp = function () {
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         t = { doc: testarea.ownerDocument };
     };
     this.tearDown = function () {
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
         t = {};
     };
 

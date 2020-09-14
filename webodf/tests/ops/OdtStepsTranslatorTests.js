@@ -22,33 +22,33 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf, ops, gui, NodeFilter*/
+/*global runtime, webodfcore, odf, ops, gui, NodeFilter*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 ops.OdtStepsTranslatorTests = function OdtStepsTranslatorTests(runner) {
     "use strict";
     var t,
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         textns = odf.Namespaces.textns,
         r = runner,
         testarea,
         CACHE_STEP_SIZE = 5;
 
     function roundDown(step) {
-        return step === core.StepDirection.PREVIOUS;
+        return step === webodfcore.StepDirection.PREVIOUS;
     }
 
     function roundUp(step) {
-        return step === core.StepDirection.NEXT;
+        return step === webodfcore.StepDirection.NEXT;
     }
 
     /**
-     * @param {!core.PositionFilter} filter
-     * @implements {core.PositionFilter}
+     * @param {!webodfcore.PositionFilter} filter
+     * @implements {webodfcore.PositionFilter}
      * @constructor
      */
     function CallCountedPositionFilter(filter) {
@@ -118,7 +118,7 @@ ops.OdtStepsTranslatorTests = function OdtStepsTranslatorTests(runner) {
 
     function createDoc(xml) {
         var domDocument = testarea.ownerDocument,
-            doc = core.UnitTest.createOdtDocument("<office:text>" + xml + "</office:text>", odf.Namespaces.namespaceMap),
+            doc = webodfcore.UnitTest.createOdtDocument("<office:text>" + xml + "</office:text>", odf.Namespaces.namespaceMap),
             node = /**@type{!Element}*/(domDocument.importNode(doc.documentElement, true));
 
         testarea.appendChild(node);
@@ -127,14 +127,14 @@ ops.OdtStepsTranslatorTests = function OdtStepsTranslatorTests(runner) {
 
     /**
      * @param {!Node} rootNode
-     * @return {!core.PositionIterator}
+     * @return {!webodfcore.PositionIterator}
      */
     function createPositionIterator(rootNode) {
-        return new core.PositionIterator(rootNode, NodeFilter.SHOW_ALL, new gui.OdfTextBodyNodeFilter(), false);
+        return new webodfcore.PositionIterator(rootNode, NodeFilter.SHOW_ALL, new gui.OdfTextBodyNodeFilter(), false);
     }
 
     this.setUp = function () {
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         t = {
             filter: new CallCountedPositionFilter(new ops.TextPositionFilter())
         };
@@ -142,7 +142,7 @@ ops.OdtStepsTranslatorTests = function OdtStepsTranslatorTests(runner) {
     };
     this.tearDown = function () {
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
 
     function convertStepsToDomPoint_At0() {

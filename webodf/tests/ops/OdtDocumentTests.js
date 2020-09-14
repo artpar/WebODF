@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, ops, Node, NodeFilter, xmldom*/
+/*global runtime, webodfcore, gui, odf, ops, Node, NodeFilter, xmldom*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 ops.OdtDocumentTests = function OdtDocumentTests(runner) {
     "use strict";
@@ -36,7 +36,7 @@ ops.OdtDocumentTests = function OdtDocumentTests(runner) {
         testarea,
         inputMemberId = "Joe",
         /**@const*/
-        PREVIOUS = core.StepDirection.PREVIOUS,
+        PREVIOUS = webodfcore.StepDirection.PREVIOUS,
         prefixToNamespace = {
             fo: odf.Namespaces.namespaceMap.fo,
             text: odf.Namespaces.namespaceMap.text,
@@ -88,7 +88,7 @@ ops.OdtDocumentTests = function OdtDocumentTests(runner) {
     }
     function createOdtDocument(xml) {
         var domDocument = testarea.ownerDocument,
-            doc = core.UnitTest.createOdtDocument("<office:text>" + xml + "</office:text>", prefixToNamespace),
+            doc = webodfcore.UnitTest.createOdtDocument("<office:text>" + xml + "</office:text>", prefixToNamespace),
             node = /**@type{!Element}*/(domDocument.importNode(doc.documentElement, true));
 
         testarea.appendChild(node);
@@ -653,7 +653,7 @@ ops.OdtDocumentTests = function OdtDocumentTests(runner) {
 
     this.setUp = function () {
         var doc, stylesElement;
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         doc = testarea.ownerDocument;
         stylesElement = doc.createElement("style");
         stylesElement.setAttribute("type", "text/css");
@@ -667,7 +667,7 @@ ops.OdtDocumentTests = function OdtDocumentTests(runner) {
         };
     };
     this.tearDown = function () {
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
         t.stylesElement.parentNode.removeChild(t.stylesElement);
         t = {};
     };

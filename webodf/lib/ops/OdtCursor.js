@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, ops, gui, runtime*/
+/*global webodfcore, ops, gui, runtime*/
 
 /**
  * @class
@@ -54,9 +54,9 @@ ops.OdtCursor = function OdtCursor(memberId, document) {
     var self = this,
         validSelectionTypes = {},
         selectionType,
-        /**@type{!core.Cursor}*/
+        /**@type{!webodfcore.Cursor}*/
         cursor,
-        events = new core.EventNotifier([ops.OdtCursor.signalCursorUpdated]);
+        events = new webodfcore.EventNotifier([ops.OdtCursor.signalCursorUpdated]);
 
     /**
      * Remove the cursor from the document
@@ -172,7 +172,7 @@ ops.OdtCursor = function OdtCursor(memberId, document) {
     };
 
     function init() {
-        cursor = new core.Cursor(document.getDOMDocument(), memberId);
+        cursor = new webodfcore.Cursor(document.getDOMDocument(), memberId);
 
         validSelectionTypes[ops.OdtCursor.RangeSelection] = true;
         validSelectionTypes[ops.OdtCursor.RegionSelection] = true;

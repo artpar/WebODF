@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global odf, runtime, xmldom, core, document*/
+/*global odf, runtime, xmldom, webodfcore, document*/
 
 /**
  * @constructor
@@ -57,7 +57,7 @@ odf.Style2CSS = function Style2CSS() {
         /**@const
          * @type {!string}*/
         webodfhelperns = "urn:webodf:names:helper",
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         styleParseUtils = new odf.StyleParseUtils(),
 
         /**@const
@@ -266,7 +266,7 @@ odf.Style2CSS = function Style2CSS() {
         odfRoot,
         defaultFontSize,
         xpath = xmldom.XPath,
-        cssUnits = new core.CSSUnits();
+        cssUnits = new webodfcore.CSSUnits();
 
     /**
      * @param {!string} family

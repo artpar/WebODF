@@ -22,16 +22,16 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core*/
+/*global runtime, webodfcore*/
 
-runtime.loadClass("core.Zip");
+runtime.loadClass("webodfcore.Zip");
 
 /**
  * Load an ODF document. Report an error if there is a problem.
  */
 function roundTripZip(zipfilepath) {
     "use strict";
-    var zip = new core.Zip(zipfilepath, function (err, zip) {
+    var zip = new webodfcore.Zip(zipfilepath, function (err, zip) {
         if (err) {
             runtime.log(err);
             runtime.exit(1);

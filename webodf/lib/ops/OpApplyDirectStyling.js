@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global ops, runtime, gui, odf, Node, core*/
+/*global ops, runtime, gui, odf, Node, webodfcore*/
 
 /**
  * @constructor
@@ -39,7 +39,7 @@ ops.OpApplyDirectStyling = function OpApplyDirectStyling() {
         /**@type{!odf.Formatting.StyleData}*/
         setProperties,
         odfUtils = odf.OdfUtils,
-        domUtils = core.DomUtils;
+        domUtils = webodfcore.DomUtils;
 
     /**
      * @param {!ops.OpApplyDirectStyling.InitSpec} data

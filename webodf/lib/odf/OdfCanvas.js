@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, odf, xmldom, webodf_css, core, gui */
+/*global runtime, odf, xmldom, webodf_css, webodfcore, gui */
 /*jslint sub: true*/
 
 (function () {
@@ -74,7 +74,7 @@
     }
     /**
      * @constructor
-     * @implements {core.Destroyable}
+     * @implements {webodfcore.Destroyable}
      * @param {!HTMLStyleElement} css
      */
     function PageSwitcher(css) {
@@ -174,7 +174,7 @@
         /**@const@type {!string}*/presentationns = odf.Namespaces.presentationns,
         /**@const@type {!string}*/webodfhelperns = "urn:webodf:names:helper",
         xpath = xmldom.XPath,
-        domUtils = core.DomUtils;
+        domUtils = webodfcore.DomUtils;
 
     /**
      * @param {!HTMLStyleElement} style
@@ -797,7 +797,7 @@
      * @constructor
      * @implements {gui.AnnotatableCanvas}
      * @implements {ops.Canvas}
-     * @implements {core.Destroyable}
+     * @implements {webodfcore.Destroyable}
      * @param {!HTMLElement} element Put and ODF Canvas inside this element.
      * @param {!gui.Viewport=} viewport Viewport used for scrolling elements and ranges into view
      */
@@ -834,7 +834,7 @@
             /**@type{!Object.<string,!Array.<!Function>>}*/
             eventHandlers = {},
             waitingForDoneTimeoutId,
-            /**@type{!core.ScheduledTask}*/redrawContainerTask,
+            /**@type{!webodfcore.ScheduledTask}*/redrawContainerTask,
             shouldRefreshCss = false,
             shouldRerenderAnnotations = false,
             loadingQueue = new LoadingQueue(),
@@ -1453,7 +1453,7 @@
             head.removeChild(positioncss);
 
             // TODO: loadingQueue, make sure it is empty
-            core.Async.destroyAll(cleanup, callback);
+            webodfcore.Async.destroyAll(cleanup, callback);
         };
 
         function init() {
@@ -1462,7 +1462,7 @@
             fontcss = addStyleSheet(doc);
             stylesxmlcss = addStyleSheet(doc);
             positioncss = addStyleSheet(doc);
-            redrawContainerTask = core.Task.createRedrawTask(redrawContainer);
+            redrawContainerTask = webodfcore.Task.createRedrawTask(redrawContainer);
             zoomHelper.subscribe(gui.ZoomHelper.signalZoomChanged, fixContainerSize);
         }
 

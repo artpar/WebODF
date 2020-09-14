@@ -8,12 +8,12 @@ There are three different ways to do testing:
 All three use the central file "tests.js". This file checks what runtime it is in,
 and depending on that enables different tests.
 
-All tests are written with classes implementing the interface core.UnitTest.
+All tests are written with classes implementing the interface webodfcore.UnitTest.
 There can be sync and async tests.
 
 Some tests expect to be run with a DOM document and use an empty div in it.
-They need to get that div in the setUp() method by calling core.UnitTest.provideTestAreaDiv,
-and should release it in the tearDown() method by calling core.UnitTest.cleanupTestAreaDiv.
+They need to get that div in the setUp() method by calling webodfcore.UnitTest.provideTestAreaDiv,
+and should release it in the tearDown() method by calling webodfcore.UnitTest.cleanupTestAreaDiv.
 
 
 Running tests in the browser

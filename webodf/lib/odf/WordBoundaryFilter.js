@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, NodeFilter, core, runtime, odf*/
+/*global Node, NodeFilter, webodfcore, runtime, odf*/
 
 /**
  * A filter that allows a position if it is in front of a word, picture etc.
@@ -50,7 +50,7 @@
  *
  *
  * @constructor
- * @implements {core.PositionFilter}
+ * @implements {webodfcore.PositionFilter}
  * @param {!ops.OdtDocument} odtDocument
  * @param {!odf.WordBoundaryFilter.IncludeWhitespace} includeWhitespace Specify the type of whitespace to include within
  *  the word boundary. TRAILING causes the accepted position to be after the whitespace trailing a word, while LEADING
@@ -65,9 +65,9 @@ odf.WordBoundaryFilter = function WordBoundaryFilter(odtDocument, includeWhitesp
         punctuation = /[!-#%-*,-\/:-;?-@\[-\]_{}¡«·»¿;·՚-՟։-֊־׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒༺-༽྅࿐-࿔၊-၏჻፡-፨᙭-᙮᚛-᚜᛫-᛭᜵-᜶។-៖៘-៚᠀-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⁽-⁾₍-₎〈-〉❨-❵⟅-⟆⟦-⟯⦃-⦘⧘-⧛⧼-⧽⳹-⳼⳾-⳿⸀-\u2e7e\u3000-\u303f゠・꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟﴾-﴿︐-︙︰-﹒﹔-﹡﹣﹨﹪-﹫！-＃％-＊，-／：-；？-＠［-］＿｛｝｟-･]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]/,
         spacing = /\s/,
         /**@const*/
-        FILTER_ACCEPT = core.PositionFilter.FilterResult.FILTER_ACCEPT,
+        FILTER_ACCEPT = webodfcore.PositionFilter.FilterResult.FILTER_ACCEPT,
         /**@const*/
-        FILTER_REJECT = core.PositionFilter.FilterResult.FILTER_REJECT,
+        FILTER_REJECT = webodfcore.PositionFilter.FilterResult.FILTER_REJECT,
         /**@const*/
         TRAILING = odf.WordBoundaryFilter.IncludeWhitespace.TRAILING,
         /**@const*/
@@ -136,8 +136,8 @@ odf.WordBoundaryFilter = function WordBoundaryFilter(odtDocument, includeWhitesp
     }
 
     /**
-     * @param {!core.PositionIterator} iterator
-     * @return {!core.PositionFilter.FilterResult}
+     * @param {!webodfcore.PositionIterator} iterator
+     * @return {!webodfcore.PositionFilter.FilterResult}
      */
     this.acceptPosition = function (iterator) {
         var container = iterator.container(),

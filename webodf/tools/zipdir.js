@@ -22,9 +22,9 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global require, console, runtime, core*/
+/*global require, console, runtime, webodfcore*/
 
-runtime.loadClass("core.Zip");
+runtime.loadClass("webodfcore.Zip");
 
 var directory = process.argv[3], // path of the directory to zip
     zipfile = process.argv[4], // path of the zip file to create
@@ -61,7 +61,7 @@ function zipdirectory(zipfile, directory, notopdir, prefixpath) {
         zip.save(entry.path, data, false, entry.date);
     }
     function zipList(base, zipfilepath, list) {
-        var zip = new core.Zip(zipfilepath, null),
+        var zip = new webodfcore.Zip(zipfilepath, null),
             i;
         for (i = 0; i < list.length; i += 1) {
             zipFile(zip, path.join(base, list[i]), path.join(prefixpath, list[i]));

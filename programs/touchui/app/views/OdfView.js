@@ -34,7 +34,7 @@
  * @source: http://www.webodf.org/
  * @source: https://github.com/kogmbh/WebODF/
  */
-/*global Ext, runtime, core, odf, window, FileReader, PhoneGap, gui*/
+/*global Ext, runtime, webodfcore, odf, window, FileReader, PhoneGap, gui*/
 runtime.loadClass('odf.OdfCanvas');
 
 Ext.define('WebODFApp.view.OdfView', (function () {
@@ -102,7 +102,7 @@ Ext.define('WebODFApp.view.OdfView', (function () {
                 reader.readAsArrayBuffer(file);
             } else {
                 reader.onloadend = function (evt) {
-                    var b = new core.Base64();
+                    var b = new webodfcore.Base64();
                     data = evt.target.result;
                     data = data.substr(data.indexOf(",") + 1);
                     data = b.convertBase64ToUTF8Array(data);

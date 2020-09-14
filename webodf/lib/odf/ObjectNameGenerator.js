@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global odf, runtime, core, Node*/
+/*global odf, runtime, webodfcore, Node*/
 
 /**
  * Helper object for generating unique object names. Each name is only reported once per instance,
@@ -50,7 +50,7 @@ odf.ObjectNameGenerator = function ObjectNameGenerator(odfContainer, memberId) {
     var stylens = odf.Namespaces.stylens,
         drawns = odf.Namespaces.drawns,
         xlinkns = odf.Namespaces.xlinkns,
-        utils = new core.Utils(),
+        utils = new webodfcore.Utils(),
         memberIdHash = utils.hashString(memberId),
         styleNameGenerator = null,
         frameNameGenerator = null,

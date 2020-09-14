@@ -22,11 +22,11 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, ops, gui, odf, runtime*/
+/*global webodfcore, ops, gui, odf, runtime*/
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!ops.Session} session
  * @param {!gui.SessionConstraints} sessionConstraints
  * @param {!gui.SessionContext} sessionContext
@@ -46,7 +46,7 @@ gui.TextController = function TextController(
 
     var odtDocument = session.getOdtDocument(),
         odfUtils = odf.OdfUtils,
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         /**
          * @const
          * @type {!boolean}
@@ -61,7 +61,7 @@ gui.TextController = function TextController(
         /** @const */
         textns = odf.Namespaces.textns,
         /**@const*/
-        NEXT = core.StepDirection.NEXT;
+        NEXT = webodfcore.StepDirection.NEXT;
 
     /**
      * @return {undefined}
@@ -292,7 +292,7 @@ gui.TextController = function TextController(
      * The iterator is constrained within the root element for the current cursor position so
      * iteration will stop once the root is entirely walked in the requested direction
      * @param {!Element} cursorNode
-     * @return {!core.StepIterator}
+     * @return {!webodfcore.StepIterator}
      */
     function createStepIterator(cursorNode) {
         var cursorRoot = odtDocument.getRootElement(cursorNode),

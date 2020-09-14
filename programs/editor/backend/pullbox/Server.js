@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global define, runtime, core, XMLHttpRequest*/
+/*global define, runtime, webodfcore, XMLHttpRequest*/
 
 define("webodf/editor/backend/pullbox/Server", [], function () {
     "use strict";
 
-    runtime.loadClass("core.Base64");
+    runtime.loadClass("webodfcore.Base64");
 
     /**
      * @constructor
@@ -39,7 +39,7 @@ define("webodf/editor/backend/pullbox/Server", [], function () {
         var self = this,
             token,
             /**@const*/serverCallTimeout = 10000,
-            base64 = new core.Base64();
+            base64 = new webodfcore.Base64();
 
         args = args || {};
         args.url = args.url || "/WSER";

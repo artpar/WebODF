@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, ops, odf*/
+/*global runtime, webodfcore, ops, odf*/
 
 (function () {
     "use strict";
@@ -31,28 +31,28 @@
      *
      * @constructor
      * @param {!Element} rootNode
-     * @param {!core.PositionIterator} iterator
-     * @param {!core.PositionFilter} filter
+     * @param {!webodfcore.PositionIterator} iterator
+     * @param {!webodfcore.PositionFilter} filter
      * @param {!number} bucketSize  Minimum number of steps between cache points
      */
     ops.OdtStepsTranslator = function OdtStepsTranslator(rootNode, iterator, filter, bucketSize) {
         var /**@type{!ops.StepsCache}*/
             stepsCache,
             odfUtils = odf.OdfUtils,
-            domUtils = core.DomUtils,
+            domUtils = webodfcore.DomUtils,
             /**@const*/
-            FILTER_ACCEPT = core.PositionFilter.FilterResult.FILTER_ACCEPT,
+            FILTER_ACCEPT = webodfcore.PositionFilter.FilterResult.FILTER_ACCEPT,
             /**@const*/
-            PREVIOUS = core.StepDirection.PREVIOUS,
+            PREVIOUS = webodfcore.StepDirection.PREVIOUS,
             /**@const*/
-            NEXT = core.StepDirection.NEXT;
+            NEXT = webodfcore.StepDirection.NEXT;
 
         /**
          * Update the steps cache based on the current iterator position. This can either add new
          * bookmarks or update existing references and repair damaged regions of the cache.
          *
          * @param {!number} steps
-         * @param {!core.PositionIterator} iterator
+         * @param {!webodfcore.PositionIterator} iterator
          * @param {!boolean} isStep
          * @return {undefined}
          */
@@ -74,7 +74,7 @@
          * Saved bookmarks always represent the first step inside the corresponding paragraph or node. Based on the
          * current TextPositionFilter impl, this means rounding up if the current iterator position is not on a step.
          * @param {!number} steps
-         * @param {!core.PositionIterator} iterator
+         * @param {!webodfcore.PositionIterator} iterator
          * @return {undefined}
          */
         function roundUpToStep(steps, iterator) {
@@ -128,8 +128,8 @@
 
         /**
          * Uses the provided delegate to choose between rounding up or rounding down to the nearest step.
-         * @param {!core.PositionIterator} iterator
-         * @param {function(!core.StepDirection, !Node, !number):boolean=} roundDirection
+         * @param {!webodfcore.PositionIterator} iterator
+         * @param {function(!webodfcore.StepDirection, !Node, !number):boolean=} roundDirection
          * @return {!boolean} Returns true if an accepted position is found, otherwise returns false.
          */
         function roundToPreferredStep(iterator, roundDirection) {
@@ -166,7 +166,7 @@
          * behaviour is to round down.
          * @param {!Node} node
          * @param {!number} offset
-         * @param {function(!core.StepDirection, !Node, !number):!boolean=} roundDirection
+         * @param {function(!webodfcore.StepDirection, !Node, !number):!boolean=} roundDirection
          * @return {!number}
          */
         this.convertDomPointToSteps = function (node, offset, roundDirection) {

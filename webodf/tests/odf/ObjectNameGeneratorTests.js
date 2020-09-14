@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf*/
+/*global runtime, webodfcore, odf*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.ObjectNameGeneratorTests = function ObjectNameGeneratorTests(runner) {
     "use strict";
@@ -63,7 +63,7 @@ odf.ObjectNameGeneratorTests = function ObjectNameGeneratorTests(runner) {
 
     this.setUp = function () {
         t = {
-            testArea : core.UnitTest.provideTestAreaDiv(),
+            testArea : webodfcore.UnitTest.provideTestAreaDiv(),
             ns : namespace
         };
 
@@ -98,7 +98,7 @@ odf.ObjectNameGeneratorTests = function ObjectNameGeneratorTests(runner) {
         xml += "    </text:p>";
         xml += "</office:text>";
 
-        t.testArea.appendChild(core.UnitTest.createXmlDocument("office:document", xml, namespace).documentElement);
+        t.testArea.appendChild(webodfcore.UnitTest.createXmlDocument("office:document", xml, namespace).documentElement);
 
         containerMock = new OdfContainerMock(
             t.testArea.firstChild.childNodes[0],
@@ -110,7 +110,7 @@ odf.ObjectNameGeneratorTests = function ObjectNameGeneratorTests(runner) {
     };
     this.tearDown = function () {
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
     function generateStyleName_ReturnsUniqueName() {
         t.result0 = t.generator.generateStyleName();

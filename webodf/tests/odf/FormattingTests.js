@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf, NodeFilter*/
+/*global runtime, webodfcore, odf, NodeFilter*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.FormattingTests = function FormattingTests(runner) {
     "use strict";
@@ -35,18 +35,18 @@ odf.FormattingTests = function FormattingTests(runner) {
         t,
         r = runner,
         namespace = odf.Namespaces.namespaceMap,
-        cssUnits = new core.CSSUnits();
+        cssUnits = new webodfcore.CSSUnits();
 
     this.setUp = function () {
         t = {
             formatting : new odf.Formatting(),
-            body : core.UnitTest.provideTestAreaDiv(),
+            body : webodfcore.UnitTest.provideTestAreaDiv(),
             ns : namespace
         };
     };
     this.tearDown = function () {
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
     /**
      * @param {!string} dom
@@ -111,7 +111,7 @@ odf.FormattingTests = function FormattingTests(runner) {
         xml += "    <style:master-page style:name='Index' style:page-layout-name='pm2'/>";
         xml += "</office:master-styles>";
 
-        fragment = core.UnitTest.createOdtDocument(xml, namespace);
+        fragment = webodfcore.UnitTest.createOdtDocument(xml, namespace);
         t.body.appendChild(fragment.documentElement);
         container = { rootElement : {
             styles : t.body.firstChild.childNodes[0],

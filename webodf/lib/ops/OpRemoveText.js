@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global ops, runtime, odf, core*/
+/*global ops, runtime, odf, webodfcore*/
 
 /**
  * @constructor
@@ -37,7 +37,7 @@ ops.OpRemoveText = function OpRemoveText() {
         /**@type {number}*/
         length,
         odfUtils = odf.OdfUtils,
-        domUtils = core.DomUtils;
+        domUtils = webodfcore.DomUtils;
 
     /**
      * @param {!ops.OpRemoveText.InitSpec} data

@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, gui, core, Node */
+/*global runtime, gui, webodfcore, Node */
 
 /**
  * Event wiring and management abstraction layer
@@ -30,7 +30,7 @@
  * class provides a mechanism for returning event focus back to the SessionController when it has been lost to
  * an external source.
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!ops.OdtDocument} odtDocument
  */
 gui.EventManager = function EventManager(odtDocument) {
@@ -79,7 +79,7 @@ gui.EventManager = function EventManager(odtDocument) {
     function EventDelegate(eventName) {
         var self = this,
             recentEvents = [],
-            subscribers = new core.EventNotifier([eventName]);
+            subscribers = new webodfcore.EventNotifier([eventName]);
 
         /**
          * @param {!Element|!Window} eventTarget
@@ -203,7 +203,7 @@ gui.EventManager = function EventManager(odtDocument) {
     function CompoundEvent(eventName, dependencies, eventProxy) {
         var /**@type{!Object}*/
             cachedState = {},
-            subscribers = new core.EventNotifier([eventName]);
+            subscribers = new webodfcore.EventNotifier([eventName]);
 
         /**
          * @param {!Event} event

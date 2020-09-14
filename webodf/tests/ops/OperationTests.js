@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, NodeFilter, runtime, core, gui, ops, odf, xmldom*/
+/*global Node, NodeFilter, runtime, webodfcore, gui, ops, odf, xmldom*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 ops.OperationTests = function OperationTests(runner) {
     "use strict";
@@ -167,7 +167,7 @@ ops.OperationTests = function OperationTests(runner) {
     function verifyStepsCache() {
         var rootNode = t.odtDocument.getRootNode();
         // Asking for the maximum available step will cause the cache to reverify itself completely
-        t.odtDocument.convertDomPointToCursorStep(rootNode, rootNode.childNodes.length, core.StepDirection.PREVIOUS);
+        t.odtDocument.convertDomPointToCursorStep(rootNode, rootNode.childNodes.length, webodfcore.StepDirection.PREVIOUS);
     }
 
     function parseTest(name, node) {
@@ -405,7 +405,7 @@ ops.OperationTests = function OperationTests(runner) {
     this.setUp = function () {
         var testarea, properties;
         t = {};
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         t.odfcanvas = new odf.OdfCanvas(testarea);
         t.odfContainer = new odf.OdfContainer(odf.OdfContainer.DocumentType.TEXT, null);
         t.odfcanvas.setOdfContainer(t.odfContainer);
@@ -419,7 +419,7 @@ ops.OperationTests = function OperationTests(runner) {
     this.tearDown = function () {
         t.odfcanvas.destroy(function () { return; });
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
     this.tests = function () {
         var pre = r.resourcePrefix();

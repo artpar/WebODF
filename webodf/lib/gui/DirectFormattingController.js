@@ -22,11 +22,11 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, ops, odf, gui, runtime*/
+/*global webodfcore, ops, odf, gui, runtime*/
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!ops.Session} session
  * @param {!gui.SessionConstraints} sessionConstraints
  * @param {!gui.SessionContext} sessionContext
@@ -48,9 +48,9 @@ gui.DirectFormattingController = function DirectFormattingController(
 
     var self = this,
         odtDocument = session.getOdtDocument(),
-        utils = new core.Utils(),
+        utils = new webodfcore.Utils(),
         odfUtils = odf.OdfUtils,
-        eventNotifier = new core.EventNotifier([
+        eventNotifier = new webodfcore.EventNotifier([
             gui.DirectFormattingController.enabledChanged,
             gui.DirectFormattingController.textStylingChanged,
             gui.DirectFormattingController.paragraphStylingChanged
@@ -58,13 +58,13 @@ gui.DirectFormattingController = function DirectFormattingController(
         /**@const*/
         textns = odf.Namespaces.textns,
         /**@const*/
-        NEXT = core.StepDirection.NEXT,
+        NEXT = webodfcore.StepDirection.NEXT,
         /**@type{?odf.Formatting.StyleData}*/
         directCursorStyleProperties = null,
         // cached text settings
         /**@type{!gui.DirectFormattingController.SelectionInfo}*/
         lastSignalledSelectionInfo,
-        /**@type {!core.LazyProperty.<!gui.DirectFormattingController.SelectionInfo>} */
+        /**@type {!webodfcore.LazyProperty.<!gui.DirectFormattingController.SelectionInfo>} */
         selectionInfoCache;
 
     /**
@@ -884,9 +884,9 @@ gui.DirectFormattingController = function DirectFormattingController(
         odtDocument.subscribe(ops.OdtDocument.signalOperationEnd, clearCursorStyle);
         odtDocument.subscribe(ops.OdtDocument.signalProcessingBatchEnd, emitSelectionChanges);
         sessionConstraints.subscribe(gui.CommonConstraints.EDIT.REVIEW_MODE, forceSelectionInfoRefresh);
-        selectionInfoCache = new core.LazyProperty(getSelectionInfo);
+        selectionInfoCache = new webodfcore.LazyProperty(getSelectionInfo);
         // Using a function rather than calling selectionInfoCache.value() directly because Closure Compiler's generics
-        // inference is quite limited and does not seem to recognise the core.LazyProperty type interface correctly
+        // inference is quite limited and does not seem to recognise the webodfcore.LazyProperty type interface correctly
         // within the function that creates the instance. Everywhere else in this file has no issues with it though...
         lastSignalledSelectionInfo = getCachedSelectionInfo();
 

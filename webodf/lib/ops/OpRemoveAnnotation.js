@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global ops, runtime, odf, core*/
+/*global ops, runtime, odf, webodfcore*/
 
 /**
  * @constructor
@@ -35,7 +35,7 @@ ops.OpRemoveAnnotation = function OpRemoveAnnotation() {
         position,
         /**@type{number}*/
         length,
-        domUtils = core.DomUtils;
+        domUtils = webodfcore.DomUtils;
 
     /**
      * @param {!ops.OpRemoveAnnotation.InitSpec} data

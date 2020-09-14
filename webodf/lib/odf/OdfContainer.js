@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, NodeFilter, runtime, core, xmldom, odf, DOMParser, document, webodf */
+/*global Node, NodeFilter, runtime, webodfcore, xmldom, odf, DOMParser, document, webodf */
 
 (function () {
     "use strict";
     var styleInfo = new odf.StyleInfo(),
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         /**@const
            @type{!string}*/
         officens = "urn:oasis:names:tc:opendocument:xmlns:office:1.0",
@@ -47,7 +47,7 @@
         /**@const
            @type{!string}*/
         automaticStylePrefix = Date.now() + "_webodf_",
-        base64 = new core.Base64(),
+        base64 = new webodfcore.Base64(),
         /**@const
            @type{!string}*/
         documentStylesScope = "document-styles",
@@ -238,7 +238,7 @@
      * @param {string} name
      * @param {string} mimetype
      * @param {!odf.OdfContainer} container
-     * @param {core.Zip} zip
+     * @param {webodfcore.Zip} zip
      */
     odf.OdfPart = function OdfPart(name, mimetype,  container, zip) {
         var self = this;
@@ -310,7 +310,7 @@
      */
     odf.OdfContainer = function OdfContainer(urlOrType, onstatereadychange) {
         var self = this,
-            /**@type {!core.Zip}*/
+            /**@type {!webodfcore.Zip}*/
             zip,
             /**@type {!Object.<!string,!string>}*/
             partMimetypes = {},
@@ -1244,10 +1244,10 @@
         /**
          * @param {!string} type
          * @param {!boolean=} isTemplate  Default value is false.
-         * @return {!core.Zip}
+         * @return {!webodfcore.Zip}
          */
         function createEmptyDocument(type, isTemplate) {
-            var emptyzip = new core.Zip("", null),
+            var emptyzip = new webodfcore.Zip("", null),
                 mimetype = "application/vnd.oasis.opendocument." + type + (isTemplate === true ? "-template" : ""),
                 data = runtime.byteArrayFromString(
                     mimetype,
@@ -1409,7 +1409,7 @@
             zip = createEmptyDocument("spreadsheet", true);
         } else {
             url = /**@type{!string}*/(urlOrType);
-            zip = new core.Zip(url, function (err, zipobject) {
+            zip = new webodfcore.Zip(url, function (err, zipobject) {
                 zip = zipobject;
                 if (err) {
                     loadFromXML(url, function (xmlerr) {

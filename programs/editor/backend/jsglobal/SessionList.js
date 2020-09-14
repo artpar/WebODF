@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global define, ops, runtime, core */
+/*global define, ops, runtime, webodfcore */
 
 define("webodf/editor/backend/jsglobal/SessionList", [], function () {
     "use strict";
@@ -36,10 +36,10 @@ define("webodf/editor/backend/jsglobal/SessionList", [], function () {
         /**@const @type {!number}*/
         POLL_FREQUENCY_MS = 500;
 
-    runtime.loadClass("core.EventNotifier");
+    runtime.loadClass("webodfcore.EventNotifier");
 
     return function JsGlobalSessionList(server) {
-        var events = new core.EventNotifier([
+        var events = new webodfcore.EventNotifier([
                 EVENT_SESSION_CREATED,
                 EVENT_SESSION_MODIFIED,
                 EVENT_SESSION_REMOVED
@@ -116,7 +116,7 @@ define("webodf/editor/backend/jsglobal/SessionList", [], function () {
         };
 
         function init() {
-            pullUpdateTask = core.Task.createTimeoutTask(function() {
+            pullUpdateTask = webodfcore.Task.createTimeoutTask(function() {
                 fetchAndProcessSessionList();
                 pullUpdateTask.trigger();
             }, POLL_FREQUENCY_MS);

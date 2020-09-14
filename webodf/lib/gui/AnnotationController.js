@@ -22,11 +22,11 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, ops, Node*/
+/*global runtime, webodfcore, gui, odf, ops, Node*/
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!ops.Session} session
  * @param {!gui.SessionConstraints} sessionConstraints
  * @param {!string} inputMemberId
@@ -36,10 +36,10 @@ gui.AnnotationController = function AnnotationController(session, sessionConstra
 
     var odtDocument = session.getOdtDocument(),
         isAnnotatable = false,
-        eventNotifier = new core.EventNotifier([gui.AnnotationController.annotatableChanged]),
+        eventNotifier = new webodfcore.EventNotifier([gui.AnnotationController.annotatableChanged]),
         odfUtils = odf.OdfUtils,
         /**@const*/
-        NEXT = core.StepDirection.NEXT;
+        NEXT = webodfcore.StepDirection.NEXT;
 
     /**
      * @return {undefined}

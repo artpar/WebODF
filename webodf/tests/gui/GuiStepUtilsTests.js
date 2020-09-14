@@ -22,22 +22,22 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, gui, Node*/
+/*global webodfcore, gui, Node*/
 
 /**
  * @constructor
- * @param {!core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {!webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 gui.GuiStepUtilsTests = function GuiStepUtilsTests(runner) {
     "use strict";
     var r = runner,
         t,
         guiStepUtils = new gui.GuiStepUtils(),
-        FILTER_ACCEPT = core.PositionFilter.FilterResult.FILTER_ACCEPT,
-        FILTER_REJECT = core.PositionFilter.FilterResult.FILTER_REJECT,
-        PREVIOUS = core.StepDirection.PREVIOUS,
-        NEXT = core.StepDirection.NEXT,
+        FILTER_ACCEPT = webodfcore.PositionFilter.FilterResult.FILTER_ACCEPT,
+        FILTER_REJECT = webodfcore.PositionFilter.FilterResult.FILTER_REJECT,
+        PREVIOUS = webodfcore.StepDirection.PREVIOUS,
+        NEXT = webodfcore.StepDirection.NEXT,
         LETTER_A = /A/,
         ANY_CHAR = /[A-Z]/;
 
@@ -57,7 +57,7 @@ gui.GuiStepUtilsTests = function GuiStepUtilsTests(runner) {
     /**
      * Accepts all positions to the left of a text character
      * @constructor
-     * @implements {core.PositionFilter}
+     * @implements {webodfcore.PositionFilter}
      */
     function LeftOfTextFilter() {
         this.acceptPosition = function(iterator) {
@@ -127,23 +127,23 @@ gui.GuiStepUtilsTests = function GuiStepUtilsTests(runner) {
     }
 
     this.setUp = function () {
-        var doc = core.UnitTest.provideTestAreaDiv(),
-            iterator = new core.PositionIterator(doc);
+        var doc = webodfcore.UnitTest.provideTestAreaDiv(),
+            iterator = new webodfcore.PositionIterator(doc);
         t = {
             doc: doc,
-            steps: new core.StepIterator(new LeftOfTextFilter(), iterator)
+            steps: new webodfcore.StepIterator(new LeftOfTextFilter(), iterator)
         };
     };
 
     this.tearDown = function () {
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
         t = {};
     };
 
     /**
      * Return an array of client rectangle pairs for each position within the text node
      * @param {!Text} textNode
-     * @param {!core.StepDirection} direction
+     * @param {!webodfcore.StepDirection} direction
      * @return {!Array.<!string>}
      */
     function getClientRectPairs(textNode, direction) {

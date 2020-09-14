@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global window, document, alert, navigator, require, dojo, runtime, core, gui, ops, odf, WodoFromSource*/
+/*global window, document, alert, navigator, require, dojo, runtime, webodfcore, gui, ops, odf, WodoFromSource*/
 
 /**
  * Namespace of the Wodo.TextEditor
@@ -311,7 +311,7 @@ window.Wodo = window.Wodo || (function () {
             pendingMemberId,
             pendingEditorReadyCallback,
             //
-            eventNotifier = new core.EventNotifier([
+            eventNotifier = new webodfcore.EventNotifier([
                 EVENT_UNKNOWNERROR,
                 EVENT_DOCUMENTMODIFIEDCHANGED,
                 EVENT_METADATACHANGED
@@ -630,7 +630,7 @@ window.Wodo = window.Wodo || (function () {
                 destroyInternal
             ]);
 
-            core.Async.destroyAll(destroyCallbacks, callback);
+            webodfcore.Async.destroyAll(destroyCallbacks, callback);
         };
 
         // TODO:

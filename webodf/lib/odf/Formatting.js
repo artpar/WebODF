@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, odf, runtime, core*/
+/*global Node, odf, runtime, webodfcore*/
 
 /**
  * @constructor
@@ -44,9 +44,9 @@ odf.Formatting = function Formatting() {
         /**@const*/
         fons = odf.Namespaces.fons,
         odfUtils = odf.OdfUtils,
-        domUtils = core.DomUtils,
-        utils = new core.Utils(),
-        cssUnits = new core.CSSUnits(),
+        domUtils = webodfcore.DomUtils,
+        utils = new webodfcore.Utils(),
+        cssUnits = new webodfcore.CSSUnits(),
         // TODO: needs to be extended. Possibly created together with CSS from sone default description?
         /**@const
            @type {!Object.<!string,!odf.Formatting.StyleData>}*/

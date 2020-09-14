@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, ops*/
+/*global runtime, webodfcore, gui, ops*/
 
 
 /**
@@ -32,7 +32,7 @@
  * caret's current focus, and ensure the caret stays visible after every local
  * operation.
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!gui.SessionController} sessionController
  * @param {!gui.Viewport} viewport
  */
@@ -165,7 +165,7 @@ gui.CaretManager = function CaretManager(sessionController, viewport) {
         sessionController.getSelectionController().setCaretXPositionLocator(null);
         odtDocument.unsubscribe(ops.Document.signalCursorRemoved, removeCaret);
         carets = {};
-        core.Async.destroyAll(caretCleanup, callback);
+        webodfcore.Async.destroyAll(caretCleanup, callback);
     };
 
     function init() {

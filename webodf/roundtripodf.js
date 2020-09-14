@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf*/
+/*global runtime, webodfcore, odf*/
 
 runtime.loadClass("odf.OdfContainer");
 

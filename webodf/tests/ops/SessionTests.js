@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf, ops*/
+/*global runtime, webodfcore, odf, ops*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 ops.SessionTests = function SessionTests(runner) {
     "use strict";
@@ -37,7 +37,7 @@ ops.SessionTests = function SessionTests(runner) {
 
     this.setUp = function () {
         t = {};
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         odfcanvas = new odf.OdfCanvas(testarea);
         odfcanvas.setOdfContainer(new odf.OdfContainer(odf.OdfContainer.DocumentType.TEXT, null));
         t.odf = odfcanvas.odfContainer();
@@ -45,7 +45,7 @@ ops.SessionTests = function SessionTests(runner) {
     this.tearDown = function () {
         odfcanvas.destroy(function () { return; });
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
     function newSession() {
         r.shouldBe(t, "t.odf.state", "odf.OdfContainer.DONE");

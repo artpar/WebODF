@@ -22,11 +22,11 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, gui*/
+/*global webodfcore, gui*/
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!Element} parentElement
  */
 gui.EditInfoHandle = function EditInfoHandle(parentElement) {
@@ -42,7 +42,7 @@ gui.EditInfoHandle = function EditInfoHandle(parentElement) {
 
     function renderEdits() {
         var i, infoDiv, colorSpan, authorSpan, timeSpan;
-        core.DomUtils.removeAllChildNodes(handle);
+        webodfcore.DomUtils.removeAllChildNodes(handle);
         for (i = 0; i < edits.length; i += 1) {
             infoDiv = document.createElementNS(htmlns, 'div');
             infoDiv.className = "editInfo";

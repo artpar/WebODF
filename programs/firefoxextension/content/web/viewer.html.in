@@ -88,7 +88,7 @@ function addSpacer(parent) {
     parent.appendChild(spacer);
 }
 function init() {
-    runtime.loadClass("core.Base64");
+    runtime.loadClass("webodfcore.Base64");
     var toolbar = document.getElementById("toolbar");
     addButton(toolbar, "download this document", function onclick() {
         FirefoxCom.request('download', { originalUrl: webodffirefox.url });

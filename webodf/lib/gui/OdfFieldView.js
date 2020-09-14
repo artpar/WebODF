@@ -28,7 +28,7 @@
  * Show ODF fields in an ODT document.
  *
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!odf.OdfCanvas} odfCanvas
  */
 gui.OdfFieldView = function(odfCanvas) {

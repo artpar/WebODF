@@ -22,18 +22,18 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, ops, Node */
+/*global runtime, webodfcore, gui, odf, ops, Node */
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!ops.Session} session
  * @param {!string} inputMemberId
  */
 gui.SelectionController = function SelectionController(session, inputMemberId) {
     "use strict";
     var odtDocument = session.getOdtDocument(),
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         odfUtils = odf.OdfUtils,
         baseFilter = odtDocument.getPositionFilter(),
         guiStepUtils = new gui.GuiStepUtils(),
@@ -42,12 +42,12 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
         caretXPositionLocator = null,
         /**@type{!number|undefined}*/
         lastXPosition,
-        /**@type{!core.ScheduledTask}*/
+        /**@type{!webodfcore.ScheduledTask}*/
         resetLastXPositionTask,
         TRAILING_SPACE = odf.WordBoundaryFilter.IncludeWhitespace.TRAILING,
         LEADING_SPACE = odf.WordBoundaryFilter.IncludeWhitespace.LEADING,
-        PREVIOUS = core.StepDirection.PREVIOUS,
-        NEXT = core.StepDirection.NEXT,
+        PREVIOUS = webodfcore.StepDirection.PREVIOUS,
+        NEXT = webodfcore.StepDirection.NEXT,
         // Number of milliseconds to keep the user's last up/down caret X position for
         /**@const*/ UPDOWN_NAVIGATION_RESET_DELAY_MS = 2000;
 
@@ -66,7 +66,7 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
     /**
      * Create a new step iterator with the base Odt filter, and a root filter for the current input member.
      * The step iterator subtree is set to the root of the current cursor node
-     * @return {!core.StepIterator}
+     * @return {!webodfcore.StepIterator}
      */
     function createKeyboardStepIterator() {
         var cursor = odtDocument.getCursor(inputMemberId),
@@ -80,7 +80,7 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
      * @param {!Node} node
      * @param {!number} offset
      * @param {!odf.WordBoundaryFilter.IncludeWhitespace} includeWhitespace
-     * @return {!core.StepIterator}
+     * @return {!webodfcore.StepIterator}
      */
     function createWordBoundaryStepIterator(node, offset, includeWhitespace) {
         var wordBoundaryFilter = new odf.WordBoundaryFilter(odtDocument, includeWhitespace),
@@ -266,7 +266,7 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
      * This function will assert if no valid step is found within the supplied root.
      *
      * @param {!Node} root Root to contain iteration within
-     * @param {!Array.<!core.PositionFilter>} filters Position filters
+     * @param {!Array.<!webodfcore.PositionFilter>} filters Position filters
      * @param {!Range} range Range to modify
      * @param {!boolean} modifyStart Set to true to modify the start container & offset. If false, the end
      * container and offset will be modified instead.
@@ -368,7 +368,7 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
     this.selectRange = selectRange;
 
     /**
-     * @param {!core.StepDirection} direction
+     * @param {!webodfcore.StepDirection} direction
      * @param {!boolean} extend
      * @return {undefined}
      */
@@ -428,7 +428,7 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
     };
 
     /**
-     * @param {!core.StepDirection} direction PREVIOUS for upwards NEXT for downwards
+     * @param {!webodfcore.StepDirection} direction PREVIOUS for upwards NEXT for downwards
      * @param {!boolean} extend
      * @return {undefined}
      */
@@ -515,7 +515,7 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
     this.extendSelectionDown = extendSelectionDown;
 
     /**
-     * @param {!core.StepDirection} direction
+     * @param {!webodfcore.StepDirection} direction
      * @param {!boolean} extend
      * @return {undefined}
      */
@@ -536,7 +536,7 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
     }
 
     /**
-     * @param {!core.StepDirection} direction
+     * @param {!webodfcore.StepDirection} direction
      * @param {!boolean} extend whether extend the selection instead of moving the cursor
      * @return {undefined}
      */
@@ -623,7 +623,7 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
     this.extendSelectionToLineEnd = extendSelectionToLineEnd;
 
     /**
-     * @param {!core.StepDirection} direction
+     * @param {!webodfcore.StepDirection} direction
      * @param {!boolean} extend True to extend the selection
      * @param {!function(!Node):Node} getContainmentNode Returns a node container for the supplied node.
      *  Usually this will be something like the parent paragraph or root the supplied node is within
@@ -765,11 +765,11 @@ gui.SelectionController = function SelectionController(session, inputMemberId) {
      */
     this.destroy = function (callback) {
         odtDocument.unsubscribe(ops.OdtDocument.signalOperationStart, resetLastXPosition);
-        core.Async.destroyAll([resetLastXPositionTask.destroy], callback);
+        webodfcore.Async.destroyAll([resetLastXPositionTask.destroy], callback);
     };
 
     function init() {
-        resetLastXPositionTask = core.Task.createTimeoutTask(function() {
+        resetLastXPositionTask = webodfcore.Task.createTimeoutTask(function() {
             lastXPosition = undefined;
         }, UPDOWN_NAVIGATION_RESET_DELAY_MS);
         odtDocument.subscribe(ops.OdtDocument.signalOperationStart, resetLastXPosition);

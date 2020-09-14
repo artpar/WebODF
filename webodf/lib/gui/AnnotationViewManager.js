@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, gui, core, odf, Node*/
+/*global runtime, gui, webodfcore, odf, Node*/
 /*jslint sub: true*/
 
 /**

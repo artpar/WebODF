@@ -26,7 +26,7 @@
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!function():!HTMLElement} getContainer Fetch the surrounding HTML container
  * @param {!gui.KeyboardHandler} keyDownHandler
  * @param {!gui.KeyboardHandler} keyUpHandler

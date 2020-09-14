@@ -22,17 +22,17 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, gui, odf, core */
+/*global runtime, gui, odf, webodfcore */
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!odf.OdfCanvas} odfCanvas
  * @param {!function():!number} getActiveModifier Get the currently active hyperlink click handler modifier
  */
 gui.HyperlinkTooltipView = function HyperlinkTooltipView(odfCanvas, getActiveModifier) {
     "use strict";
-    var domUtils = core.DomUtils,
+    var domUtils = webodfcore.DomUtils,
         odfUtils = odf.OdfUtils,
         /**@type{!Window}*/
         window = /**@type{!Window}*/(runtime.getWindow()),

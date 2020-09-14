@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, ops*/
+/*global runtime, webodfcore, gui, odf, ops*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 gui.DirectFormattingControllerTests = function DirectFormattingControllerTests(runner) {
     "use strict";
@@ -35,8 +35,8 @@ gui.DirectFormattingControllerTests = function DirectFormattingControllerTests(r
         t,
         testarea,
         officens = odf.Namespaces.officens,
-        utils = new core.Utils(),
-        domUtils = core.DomUtils,
+        utils = new webodfcore.Utils(),
+        domUtils = webodfcore.DomUtils,
         inputMemberId = "Joe";
 
     /**
@@ -113,7 +113,7 @@ gui.DirectFormattingControllerTests = function DirectFormattingControllerTests(r
             range;
 
         xml = xml.replace("[", "<test:start/>").replace("]", "<test:end/>");
-        doc = core.UnitTest.createOdtDocument("<office:styles>" + styles + "</office:styles>" +
+        doc = webodfcore.UnitTest.createOdtDocument("<office:styles>" + styles + "</office:styles>" +
                                                 "<office:automatic-styles></office:automatic-styles>" +
                                                 "<office:text>" + xml + "</office:text>", namespaceMap);
         node = /**@type{!Element}*/(domDocument.importNode(doc.documentElement, true));
@@ -146,11 +146,11 @@ gui.DirectFormattingControllerTests = function DirectFormattingControllerTests(r
     }
 
     this.setUp = function () {
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         t = { doc: testarea.ownerDocument };
     };
     this.tearDown = function () {
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
         t = {};
     };
 

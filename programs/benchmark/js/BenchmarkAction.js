@@ -22,19 +22,19 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global define, runtime, core*/
+/*global define, runtime, webodfcore*/
 
 define(function () {
     "use strict";
 
-    runtime.loadClass("core.EventNotifier");
+    runtime.loadClass("webodfcore.EventNotifier");
 
     /**
      * @constructor
      */
     function BenchmarkAction(state) {
         var startedAt,
-            events = new core.EventNotifier(["start", "complete"]);
+            events = new webodfcore.EventNotifier(["start", "complete"]);
 
         this.subscribe = events.subscribe;
 

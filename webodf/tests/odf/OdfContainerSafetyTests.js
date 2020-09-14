@@ -22,13 +22,13 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf, xmldom*/
+/*global runtime, webodfcore, odf, xmldom*/
 
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.OdfContainerSafetyTests = function OdfContainerSafetyTests(runner) {
     "use strict";

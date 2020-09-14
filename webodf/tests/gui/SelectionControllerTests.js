@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, ops, Node, NodeFilter, xmldom*/
+/*global runtime, webodfcore, gui, odf, ops, Node, NodeFilter, xmldom*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 gui.SelectionControllerTests = function SelectionControllerTests(runner) {
     "use strict";
@@ -36,7 +36,7 @@ gui.SelectionControllerTests = function SelectionControllerTests(runner) {
         testarea,
         textns = odf.Namespaces.textns,
         officens = odf.Namespaces.officens,
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         inputMemberId = "Joe";
 
     /**
@@ -84,7 +84,7 @@ gui.SelectionControllerTests = function SelectionControllerTests(runner) {
      */
     function createOdtDocument(xml) {
         var domDocument = testarea.ownerDocument,
-            doc = core.UnitTest.createOdtDocument("<office:text>" + xml + "</office:text>", odf.Namespaces.namespaceMap),
+            doc = webodfcore.UnitTest.createOdtDocument("<office:text>" + xml + "</office:text>", odf.Namespaces.namespaceMap),
             node = /**@type{!Element}*/(domDocument.importNode(doc.documentElement, true));
 
         testarea.appendChild(node);
@@ -128,7 +128,7 @@ gui.SelectionControllerTests = function SelectionControllerTests(runner) {
      */
     function getMovementByWordsPositions(docContent, direction) {
         var bounds = [],
-            loopGuard = new core.LoopWatchDog(100000, 100), // Don't care really how long this takes
+            loopGuard = new webodfcore.LoopWatchDog(100000, 100), // Don't care really how long this takes
             lastSpec,
             generatedOps = false;
 
@@ -330,7 +330,7 @@ gui.SelectionControllerTests = function SelectionControllerTests(runner) {
 
     function moveSelectionToParagraphEnd_OverAnnotation() {
         var lastPosition,
-            loopGuard = new core.LoopWatchDog(100000, 100); // Don't care really how long this takes
+            loopGuard = new webodfcore.LoopWatchDog(100000, 100); // Don't care really how long this takes
         t.movementPositions = [];
         createOdtDocument("<text:p>ab<office:annotation><text:p>an</text:p></office:annotation></text:p>"
                             + "<text:p>cde</text:p>"
@@ -348,7 +348,7 @@ gui.SelectionControllerTests = function SelectionControllerTests(runner) {
 
     function moveSelectionToParagraphStart_OverAnnotation() {
         var lastPosition,
-            loopGuard = new core.LoopWatchDog(100000, 100); // Don't care really how long this takes
+            loopGuard = new webodfcore.LoopWatchDog(100000, 100); // Don't care really how long this takes
         t.movementPositions = [];
         createOdtDocument("<text:p><office:annotation><text:p>an</text:p></office:annotation>ab</text:p>"
             + "<text:p>cde</text:p>"
@@ -781,7 +781,7 @@ gui.SelectionControllerTests = function SelectionControllerTests(runner) {
 
     this.setUp = function () {
         var doc, stylesElement;
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         doc = testarea.ownerDocument;
         stylesElement = doc.createElement("style");
         stylesElement.setAttribute("type", "text/css");
@@ -803,7 +803,7 @@ gui.SelectionControllerTests = function SelectionControllerTests(runner) {
         };
     };
     this.tearDown = function () {
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
         t.stylesElement.parentNode.removeChild(t.stylesElement);
         t = {};
     };

@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, odf, gui, core, Node*/
+/*global runtime, odf, gui, webodfcore, Node*/
 
 /**
  * Helper functions to retrieve information about an ODF document using a step iterator
@@ -32,8 +32,8 @@ gui.GuiStepUtils = function GuiStepUtils() {
     "use strict";
     var odfUtils = odf.OdfUtils,
         stepUtils = new odf.StepUtils(),
-        domUtils = core.DomUtils,
-        NEXT = core.StepDirection.NEXT,
+        domUtils = webodfcore.DomUtils,
+        NEXT = webodfcore.StepDirection.NEXT,
         LEFT_TO_RIGHT = gui.StepInfo.VisualDirection.LEFT_TO_RIGHT,
         RIGHT_TO_LEFT = gui.StepInfo.VisualDirection.RIGHT_TO_LEFT;
 
@@ -41,7 +41,7 @@ gui.GuiStepUtils = function GuiStepUtils() {
      * Returns the client rectangle for the content bounds at the step iterator's current position.
      * Note, if the selected content is really collapsed whitespace, this function will return null.
      *
-     * @param {!core.StepIterator} stepIterator
+     * @param {!webodfcore.StepIterator} stepIterator
      * @return {?ClientRect}
      */
     function getContentRect(stepIterator) {
@@ -81,8 +81,8 @@ gui.GuiStepUtils = function GuiStepUtils() {
      * Advance the step iterator in the specified direction until an accepted step is identified
      * by a token scanner.
      *
-     * @param {!core.StepIterator} stepIterator
-     * @param {!core.StepDirection} direction
+     * @param {!webodfcore.StepIterator} stepIterator
+     * @param {!webodfcore.StepDirection} direction
      * @param {!Array.<!gui.VisualStepScanner>} scanners
      * @return {!boolean} Return true if a step was found that satisfied one of the scanners
      */
@@ -92,7 +92,7 @@ gui.GuiStepUtils = function GuiStepUtils() {
             rightRect,
             previousRect,
             nextRect,
-            /**@type{?core.StepIterator.StepSnapshot}*/
+            /**@type{?webodfcore.StepIterator.StepSnapshot}*/
             destinationToken,
             // Just in case no destination is found, the iterator will reset back to the initial position
             initialToken = stepIterator.snapshot(),

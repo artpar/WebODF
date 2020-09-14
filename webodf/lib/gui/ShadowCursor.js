@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, gui, ops, runtime*/
+/*global webodfcore, gui, ops, runtime*/
 
 /**
  * @class

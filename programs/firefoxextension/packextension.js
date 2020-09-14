@@ -22,9 +22,9 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global require, runtime, core*/
+/*global require, runtime, webodfcore*/
 
-runtime.loadClass("core.Base64");
+runtime.loadClass("webodfcore.Base64");
 
 function addFiles(dirname, pos, files, callback) {
     "use strict";
@@ -44,7 +44,7 @@ function addFiles(dirname, pos, files, callback) {
         }
         if (filepath === "content/webodf.js") {
             // replace eval() with evil(), since Firefox does not approve of it
-            base64 = new core.Base64();
+            base64 = new webodfcore.Base64();
             data = base64.convertUTF8ArrayToUTF16String(data);
             data = data.replace(new RegExp('eval\\(', 'g'), 'evil(');
             data = runtime.byteArrayFromString(data);

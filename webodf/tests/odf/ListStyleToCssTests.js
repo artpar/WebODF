@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf*/
+/*global runtime, webodfcore, odf*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.ListStyleToCssTests = function ListStyleToCssTests(runner) {
     "use strict";
@@ -75,12 +75,12 @@ odf.ListStyleToCssTests = function ListStyleToCssTests(runner) {
     this.setUp = function () {
         t = {
             list2css: new odf.ListStyleToCss(),
-            testArea: core.UnitTest.provideTestAreaDiv()
+            testArea: webodfcore.UnitTest.provideTestAreaDiv()
         };
     };
     this.tearDown = function () {
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
 
     /**
@@ -95,9 +95,9 @@ odf.ListStyleToCssTests = function ListStyleToCssTests(runner) {
             styleElement,
             text = "";
 
-        stylesTree = core.UnitTest.createXmlDocument('office:styles', styles, namespaceMap).documentElement;
-        automaticStylesTree = core.UnitTest.createXmlDocument('office:automatic-styles', automaticStyles, namespaceMap).documentElement;
-        bodyTree = core.UnitTest.createXmlDocument('office:body', body, namespaceMap).documentElement;
+        stylesTree = webodfcore.UnitTest.createXmlDocument('office:styles', styles, namespaceMap).documentElement;
+        automaticStylesTree = webodfcore.UnitTest.createXmlDocument('office:automatic-styles', automaticStyles, namespaceMap).documentElement;
+        bodyTree = webodfcore.UnitTest.createXmlDocument('office:body', body, namespaceMap).documentElement;
 
         styleElement = document.createElement("style");
         odf.Namespaces.forEachPrefix(function (prefix, ns) {

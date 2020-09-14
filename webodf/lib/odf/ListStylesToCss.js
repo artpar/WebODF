@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global odf, core, runtime*/
+/*global odf, webodfcore, runtime*/
 
 (function () {
     "use strict";
@@ -347,7 +347,7 @@
      */
     odf.ListStyleToCss = function ListStyleToCss() {
 
-        var cssUnits = new core.CSSUnits(),
+        var cssUnits = new webodfcore.CSSUnits(),
             odfUtils = odf.OdfUtils;
 
         /**

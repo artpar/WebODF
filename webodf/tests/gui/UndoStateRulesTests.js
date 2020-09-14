@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, ops*/
+/*global runtime, webodfcore, gui, ops*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 gui.UndoStateRulesTests = function UndoStateRulesTests(runner) {
     "use strict";
@@ -36,11 +36,11 @@ gui.UndoStateRulesTests = function UndoStateRulesTests(runner) {
 
     this.setUp = function () {
         t = { rules : new gui.UndoStateRules() };
-        core.UnitTest.provideTestAreaDiv();
+        webodfcore.UnitTest.provideTestAreaDiv();
     };
     this.tearDown = function () {
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
 
     /**

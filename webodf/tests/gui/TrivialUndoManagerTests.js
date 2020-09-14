@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, ops*/
+/*global runtime, webodfcore, gui, ops*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 gui.TrivialUndoManagerTests = function TrivialUndoManagerTests(runner) {
     "use strict";
@@ -87,7 +87,7 @@ gui.TrivialUndoManagerTests = function TrivialUndoManagerTests(runner) {
         this.subscribe = noOp;
         this.unsubscribe = noOp;
         this.createRootFilter =  function () {
-            return new core.PositionFilterChain();
+            return new webodfcore.PositionFilterChain();
         };
         this.createPositionIterator = function() {
             throw new Error("Not implemented");
@@ -121,7 +121,7 @@ gui.TrivialUndoManagerTests = function TrivialUndoManagerTests(runner) {
     }
 
     this.setUp = function () {
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         t = {
             manager : new gui.TrivialUndoManager(),
             mock : new AdaptiveMock(testarea),
@@ -136,7 +136,7 @@ gui.TrivialUndoManagerTests = function TrivialUndoManagerTests(runner) {
     };
     this.tearDown = function () {
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
 
     function create(operation, args) {

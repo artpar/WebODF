@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core*/
+/*global runtime, webodfcore*/
 
 /**
  * tool used in build process.

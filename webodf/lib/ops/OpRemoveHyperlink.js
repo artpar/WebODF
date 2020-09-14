@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global ops, odf, core, runtime */
+/*global ops, odf, webodfcore, runtime */
 
 /**
  * @constructor
@@ -32,7 +32,7 @@ ops.OpRemoveHyperlink = function OpRemoveHyperlink() {
     "use strict";
 
     var memberid, timestamp, position, length,
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         odfUtils = odf.OdfUtils;
 
     /**

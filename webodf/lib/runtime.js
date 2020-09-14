@@ -1496,9 +1496,9 @@ Runtime.create = function create() {
 var runtime = Runtime.create();
 
 /**
- * @namespace The core package.
+ * @namespace The webodfcore package.
  */
-var core = {};
+var webodfcore = {};
 /**
  * @namespace The gui package.
  */
@@ -1701,7 +1701,7 @@ var webodf = {};
     var /**@type{!Object.<string,!{dir:string, deps:!Array.<string>}>}*/
         dependencies,
         packages = {
-            core: core,
+            webodfcore: webodfcore,
             gui: gui,
             xmldom: xmldom,
             odf: odf,
@@ -1709,8 +1709,8 @@ var webodf = {};
         };
     /**
      * Check if a class has been defined.
-     * For class "core.sub.Name", this checks if there is an entry
-     * packages.core.sub.Name.
+     * For class "webodfcore.sub.Name", this checks if there is an entry
+     * packages.webodfcore.sub.Name.
      * @param {string} classname
      * @return {boolean}
      */

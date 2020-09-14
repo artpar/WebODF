@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, ops */
+/*global runtime, webodfcore, gui, odf, ops */
 
 /**
  * @constructor
@@ -54,7 +54,7 @@ gui.ImageController = function ImageController(
         odtDocument = session.getOdtDocument(),
         odfUtils = odf.OdfUtils,
         formatting = odtDocument.getFormatting(),
-        eventNotifier = new core.EventNotifier([
+        eventNotifier = new webodfcore.EventNotifier([
             gui.HyperlinkController.enabledChanged
         ]),
         isEnabled = false;
@@ -289,7 +289,7 @@ gui.ImageController = function ImageController(
             styleName,
             pageContentSize,
             imageSize,
-            cssUnits = new core.CSSUnits();
+            cssUnits = new webodfcore.CSSUnits();
 
         runtime.assert(widthInPx > 0 && heightInPx > 0, "Both width and height of the image should be greater than 0px.");
         imageSize = {

@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, ops, xmldom*/
+/*global runtime, webodfcore, gui, odf, ops, xmldom*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 gui.MetadataControllerTests = function MetadataControllerTests(runner) {
     "use strict";
@@ -159,7 +159,7 @@ gui.MetadataControllerTests = function MetadataControllerTests(runner) {
             doc,
             node;
 
-        doc = core.UnitTest.createOdtDocument("<office:meta>" + xml + "</office:meta><office:body><office:text></office:text></office:body>", odf.Namespaces.namespaceMap);
+        doc = webodfcore.UnitTest.createOdtDocument("<office:meta>" + xml + "</office:meta><office:body><office:text></office:text></office:body>", odf.Namespaces.namespaceMap);
         node = /**@type{!Element}*/(domDocument.importNode(doc.documentElement, true));
         testarea.appendChild(node);
 
@@ -207,11 +207,11 @@ gui.MetadataControllerTests = function MetadataControllerTests(runner) {
     }
 
     this.setUp = function () {
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         t = { doc: testarea.ownerDocument };
     };
     this.tearDown = function () {
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
         t = {};
     };
 

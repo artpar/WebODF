@@ -1564,7 +1564,7 @@ function HTMLAudioElement() {}
  * @constructor
  * @extends {HTMLMediaElement}
  * The webkit-prefixed attributes are defined in
- * https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/html/HTMLVideoElement.idl
+ * https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/webodfcore/html/HTMLVideoElement.idl
  */
 function HTMLVideoElement() {}
 

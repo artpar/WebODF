@@ -22,14 +22,14 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, runtime, core, gui, ops, odf, NodeFilter*/
+/*global Node, runtime, webodfcore, gui, ops, odf, NodeFilter*/
 
     /**
      * A filter that allows a position if it has the same closest
      * whitelisted root as the specified 'anchor', which can be the cursor
      * of the given memberid, or a given node
      * @constructor
-     * @implements {core.PositionFilter}
+     * @implements {webodfcore.PositionFilter}
      * @param {!string|!Node} anchor
      * @param {Object.<!ops.OdtCursor>} cursors
      * @param {function(!Node):!Node} getRoot
@@ -37,13 +37,13 @@
     function RootFilter(anchor, cursors, getRoot) {
         "use strict";
         var /**@const*/
-        FILTER_ACCEPT = core.PositionFilter.FilterResult.FILTER_ACCEPT,
+        FILTER_ACCEPT = webodfcore.PositionFilter.FilterResult.FILTER_ACCEPT,
         /**@const*/
-        FILTER_REJECT = core.PositionFilter.FilterResult.FILTER_REJECT;
+        FILTER_REJECT = webodfcore.PositionFilter.FilterResult.FILTER_REJECT;
 
         /**
-         * @param {!core.PositionIterator} iterator
-         * @return {!core.PositionFilter.FilterResult}
+         * @param {!webodfcore.PositionIterator} iterator
+         * @return {!webodfcore.PositionFilter.FilterResult}
          */
         this.acceptPosition = function (iterator) {
             var node = iterator.container(),
@@ -66,7 +66,7 @@
  * A document that keeps all data related to the mapped document.
  * @constructor
  * @implements {ops.Document}
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!odf.OdfCanvas} odfCanvas
  */
 ops.OdtDocument = function OdtDocument(odfCanvas) {
@@ -76,12 +76,12 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
         /**@type{!odf.StepUtils}*/
         stepUtils,
         odfUtils = odf.OdfUtils,
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         /**!Object.<!ops.OdtCursor>*/
         cursors = {},
         /**!Object.<!ops.Member>*/
         members = {},
-        eventNotifier = new core.EventNotifier([
+        eventNotifier = new webodfcore.EventNotifier([
             ops.Document.signalMemberAdded,
             ops.Document.signalMemberUpdated,
             ops.Document.signalMemberRemoved,
@@ -104,7 +104,7 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
             ops.OdtDocument.signalAnnotationAdded
         ]),
         /**@const*/
-        NEXT = core.StepDirection.NEXT,
+        NEXT = webodfcore.StepDirection.NEXT,
         filter,
         /**@type{!ops.OdtStepsTranslator}*/
         stepsTranslator,
@@ -113,15 +113,15 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
         /**@const*/ SHOW_ALL = NodeFilter.SHOW_ALL,
         blacklistedNodes = new gui.BlacklistNamespaceNodeFilter(["urn:webodf:names:cursor", "urn:webodf:names:editinfo"]),
         odfTextBodyFilter = new gui.OdfTextBodyNodeFilter(),
-        defaultNodeFilter = new core.NodeFilterChain([blacklistedNodes, odfTextBodyFilter]);
+        defaultNodeFilter = new webodfcore.NodeFilterChain([blacklistedNodes, odfTextBodyFilter]);
 
     /**
      *
      * @param {!Node} rootNode
-     * @return {!core.PositionIterator}
+     * @return {!webodfcore.PositionIterator}
      */
     function createPositionIterator(rootNode) {
-        return new core.PositionIterator(rootNode, SHOW_ALL, defaultNodeFilter, false);
+        return new webodfcore.PositionIterator(rootNode, SHOW_ALL, defaultNodeFilter, false);
     }
     this.createPositionIterator = createPositionIterator;
 
@@ -218,13 +218,13 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
      *
      * @param {!Node} container
      * @param {!number} offset
-     * @param {!Array.<!core.PositionFilter>} filters Filter to apply to the iterator positions. If multiple
+     * @param {!Array.<!webodfcore.PositionFilter>} filters Filter to apply to the iterator positions. If multiple
      *  iterators are provided, they will be combined in order using a PositionFilterChain.
      * @param {!Node} subTree Subtree to search for step within. Generally a paragraph or document root. Choosing
      *  a smaller subtree allows iteration to end quickly if there are no walkable steps remaining in a particular
      *  direction. This can vastly improve performance.
      *
-     * @return {!core.StepIterator}
+     * @return {!webodfcore.StepIterator}
      */
     function createStepIterator(container, offset, filters, subTree) {
         var positionIterator = createPositionIterator(subTree),
@@ -234,11 +234,11 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
         if (filters.length === 1) {
             filterOrChain = filters[0];
         } else {
-            filterOrChain = new core.PositionFilterChain();
+            filterOrChain = new webodfcore.PositionFilterChain();
             filters.forEach(filterOrChain.addFilter);
         }
 
-        stepIterator = new core.StepIterator(filterOrChain, positionIterator);
+        stepIterator = new webodfcore.StepIterator(filterOrChain, positionIterator);
         stepIterator.setPosition(container, offset);
         return stepIterator;
     }
@@ -248,7 +248,7 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
      * Returns a PositionIterator instance at the
      * specified starting position
      * @param {!number} position
-     * @return {!core.PositionIterator}
+     * @return {!webodfcore.PositionIterator}
      */
     function getIteratorAtPosition(position) {
         var iterator = createPositionIterator(getRootNode()),
@@ -271,7 +271,7 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
 
     /**
      * Rounds to the first step within the paragraph
-     * @param {!core.StepDirection} step
+     * @param {!webodfcore.StepDirection} step
      * @return {!boolean}
      */
     function roundUp(step) {
@@ -283,8 +283,8 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
      * the default is to round down to the previous step.
      * @param {!Node} node
      * @param {!number} offset
-     * @param {core.StepDirection=} roundDirection Whether to round down to the previous step or round up
-     * to the next step. The default value if unspecified is core.StepDirection.PREVIOUS
+     * @param {webodfcore.StepDirection=} roundDirection Whether to round down to the previous step or round up
+     * to the next step. The default value if unspecified is webodfcore.StepDirection.PREVIOUS
      * @return {!number}
      */
     this.convertDomPointToCursorStep = function (node, offset, roundDirection) {
@@ -536,7 +536,7 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
      */
     function upgradeWhitespacesAtPosition(step) {
         var positionIterator = getIteratorAtPosition(step),
-            stepIterator = new core.StepIterator(filter, positionIterator),
+            stepIterator = new webodfcore.StepIterator(filter, positionIterator),
             contentBounds,
             /**@type{?Node}*/
             container,
@@ -586,7 +586,7 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
      * Downgrades white space elements to normal spaces at the step iterators current step, and one step
      * to the right.
      *
-     * @param {!core.StepIterator} stepIterator
+     * @param {!webodfcore.StepIterator} stepIterator
      * @return {undefined}
      */
     function downgradeWhitespaces(stepIterator) {
@@ -635,7 +635,7 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
      */
     this.downgradeWhitespacesAtPosition = function (step) {
         var positionIterator = getIteratorAtPosition(step),
-            stepIterator = new core.StepIterator(filter, positionIterator);
+            stepIterator = new webodfcore.StepIterator(filter, positionIterator);
 
         downgradeWhitespaces(stepIterator);
     };
@@ -756,7 +756,7 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
         };
     };
     /**
-     * @return {!core.PositionFilter}
+     * @return {!webodfcore.PositionFilter}
      */
     this.getPositionFilter = function () {
         return filter;
@@ -953,7 +953,7 @@ ops.OdtDocument = function OdtDocument(odfCanvas) {
         eventNotifier.subscribe(ops.OdtDocument.signalStepsInserted, stepsTranslator.handleStepsInserted);
         eventNotifier.subscribe(ops.OdtDocument.signalStepsRemoved, stepsTranslator.handleStepsRemoved);
         eventNotifier.subscribe(ops.OdtDocument.signalOperationEnd, handleOperationExecuted);
-        eventNotifier.subscribe(ops.OdtDocument.signalProcessingBatchEnd, core.Task.processTasks);
+        eventNotifier.subscribe(ops.OdtDocument.signalProcessingBatchEnd, webodfcore.Task.processTasks);
     }
     init();
 };

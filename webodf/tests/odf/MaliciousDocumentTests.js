@@ -22,19 +22,19 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, odf, runtime, NodeFilter, Node*/
+/*global webodfcore, odf, runtime, NodeFilter, Node*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.MaliciousDocumentTests = function MaliciousDocumentTests(runner) {
     "use strict";
 
     var r = runner,
         t,
-        async = core.Async;
+        async = webodfcore.Async;
 
     /*jslint emptyblock:true*/
     function noOp() { }
@@ -49,7 +49,7 @@ odf.MaliciousDocumentTests = function MaliciousDocumentTests(runner) {
     }
 
     this.setUp = function () {
-        var root = core.UnitTest.provideTestAreaDiv();
+        var root = webodfcore.UnitTest.provideTestAreaDiv();
         t = {
             root: root,
             doc: root.ownerDocument,
@@ -59,7 +59,7 @@ odf.MaliciousDocumentTests = function MaliciousDocumentTests(runner) {
 
     this.tearDown = function () {
         async.destroyAll(t.cleanup, noOp);
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
 
     /**

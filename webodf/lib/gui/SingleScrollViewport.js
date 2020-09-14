@@ -38,9 +38,9 @@ gui.SingleScrollViewport = function(scrollPane) {
 
     /**
      * Pad the client rect with the supplied margin
-     * @param {!core.SimpleClientRect} clientRect
-     * @param {!core.SimpleClientRect} margin
-     * @return {!core.SimpleClientRect}
+     * @param {!webodfcore.SimpleClientRect} clientRect
+     * @param {!webodfcore.SimpleClientRect} margin
+     * @return {!webodfcore.SimpleClientRect}
      */
     function shrinkClientRectByMargin(clientRect, margin) {
         return {
@@ -52,7 +52,7 @@ gui.SingleScrollViewport = function(scrollPane) {
     }
 
     /**
-     * @param {!core.SimpleClientRect} clientRect
+     * @param {!webodfcore.SimpleClientRect} clientRect
      * @return {!number}
      */
     function height(clientRect) {
@@ -60,7 +60,7 @@ gui.SingleScrollViewport = function(scrollPane) {
     }
 
     /**
-     * @param {!core.SimpleClientRect} clientRect
+     * @param {!webodfcore.SimpleClientRect} clientRect
      * @return {!number}
      */
     function width(clientRect) {
@@ -68,7 +68,7 @@ gui.SingleScrollViewport = function(scrollPane) {
     }
 
     /**
-     * @param {?core.SimpleClientRect} clientRect
+     * @param {?webodfcore.SimpleClientRect} clientRect
      * @param {!boolean=} alignWithTop
      * @return {undefined}
      */
@@ -77,18 +77,18 @@ gui.SingleScrollViewport = function(scrollPane) {
             horizontalScrollbarWidth = scrollPane.offsetWidth - scrollPane.clientWidth,
             nonNullClientRect,
             scrollPaneRect = scrollPane.getBoundingClientRect(),
-            /**@type{!core.SimpleClientRect}*/
+            /**@type{!webodfcore.SimpleClientRect}*/
             paneRect;
 
         if (!clientRect || !scrollPaneRect) {
             return;
         }
 
-        nonNullClientRect = /**@type{!core.SimpleClientRect}*/(clientRect);
+        nonNullClientRect = /**@type{!webodfcore.SimpleClientRect}*/(clientRect);
 
         // Visible area is slightly different from the BCR
         // See https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements
-        paneRect = shrinkClientRectByMargin(/**@type{!core.SimpleClientRect}*/(scrollPaneRect), {
+        paneRect = shrinkClientRectByMargin(/**@type{!webodfcore.SimpleClientRect}*/(scrollPaneRect), {
             top: VIEW_PADDING_PX,
             bottom: verticalScrollbarHeight + VIEW_PADDING_PX,
             left: VIEW_PADDING_PX,

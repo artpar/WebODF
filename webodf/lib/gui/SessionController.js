@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, Node, ops, odf */
+/*global runtime, webodfcore, gui, Node, ops, odf */
 
 /**
  * @constructor
@@ -51,11 +51,11 @@ gui.SessionControllerOptions = function () {
 (function () {
     "use strict";
 
-    var /**@const*/FILTER_ACCEPT = core.PositionFilter.FilterResult.FILTER_ACCEPT;
+    var /**@const*/FILTER_ACCEPT = webodfcore.PositionFilter.FilterResult.FILTER_ACCEPT;
 
     /**
      * @constructor
-     * @implements {core.Destroyable}
+     * @implements {webodfcore.Destroyable}
      * @param {!ops.Session} session
      * @param {!string} inputMemberId
      * @param {!ops.OdtCursor} shadowCursor
@@ -66,7 +66,7 @@ gui.SessionControllerOptions = function () {
             odtDocument = session.getOdtDocument(),
             sessionConstraints = new gui.SessionConstraints(),
             sessionContext = new gui.SessionContext(session, inputMemberId),
-            domUtils = core.DomUtils,
+            domUtils = webodfcore.DomUtils,
             odfUtils = odf.OdfUtils,
             mimeDataExporter = new gui.MimeDataExporter(),
             clipboard = new gui.Clipboard(mimeDataExporter),
@@ -77,7 +77,7 @@ gui.SessionControllerOptions = function () {
             clickStartedWithinCanvas = false,
             objectNameGenerator = new odf.ObjectNameGenerator(odtDocument.getOdfCanvas().odfContainer(), inputMemberId),
             isMouseMoved = false,
-            /**@type{core.PositionFilter}*/
+            /**@type{webodfcore.PositionFilter}*/
             mouseDownRootFilter = null,
             handleMouseClickTimeoutId,
             undoManager = null,
@@ -92,9 +92,9 @@ gui.SessionControllerOptions = function () {
             imageController = new gui.ImageController(session, sessionConstraints, sessionContext, inputMemberId, objectNameGenerator),
             imageSelector = new gui.ImageSelector(odtDocument.getOdfCanvas()),
             shadowCursorIterator = odtDocument.createPositionIterator(odtDocument.getRootNode()),
-            /**@type{!core.ScheduledTask}*/
+            /**@type{!webodfcore.ScheduledTask}*/
             drawShadowCursorTask,
-            /**@type{!core.ScheduledTask}*/
+            /**@type{!webodfcore.ScheduledTask}*/
             redrawRegionSelectionTask,
             pasteController = new gui.PasteController(session, sessionConstraints, sessionContext, inputMemberId),
             inputMethodEditor = new gui.InputMethodEditor(inputMemberId, eventManager),
@@ -1132,12 +1132,12 @@ gui.SessionControllerOptions = function () {
             }
 
             runtime.clearTimeout(handleMouseClickTimeoutId);
-            core.Async.destroyAll(destroyCallbacks, callback);
+            webodfcore.Async.destroyAll(destroyCallbacks, callback);
         };
 
         function init() {
-            drawShadowCursorTask = core.Task.createRedrawTask(updateShadowCursor);
-            redrawRegionSelectionTask = core.Task.createRedrawTask(redrawRegionSelection);
+            drawShadowCursorTask = webodfcore.Task.createRedrawTask(updateShadowCursor);
+            redrawRegionSelectionTask = webodfcore.Task.createRedrawTask(redrawRegionSelection);
 
             keyDownHandler.bind(keyCode.Left, modifier.None, rangeSelectionOnly(selectionController.moveCursorToLeft));
             keyDownHandler.bind(keyCode.Right, modifier.None, rangeSelectionOnly(selectionController.moveCursorToRight));

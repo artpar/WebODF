@@ -22,13 +22,13 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, NodeFilter, gui, odf, ops, runtime, core*/
+/*global Node, NodeFilter, gui, odf, ops, runtime, webodfcore*/
 
 /**
  *  A GUI class that attaches to a cursor and renders it's selection
  *  as an SVG polygon.
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @implements {gui.SelectionView}
  * @param {!ops.OdtCursor} cursor
  */
@@ -47,7 +47,7 @@ gui.SvgSelectionView = function SvgSelectionView(cursor) {
         handle1 = doc.createElementNS(svgns, 'circle'),
         handle2 = doc.createElementNS(svgns, 'circle'),
         odfUtils = odf.OdfUtils,
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         /**@type{!gui.ZoomHelper}*/
         zoomHelper = document.getCanvas().getZoomHelper(),
         /**@type{boolean}*/
@@ -59,7 +59,7 @@ gui.SvgSelectionView = function SvgSelectionView(cursor) {
         FILTER_REJECT = NodeFilter.FILTER_REJECT,
         /**@const*/
         HANDLE_RADIUS = 8,
-        /**@type{!core.ScheduledTask}*/
+        /**@type{!webodfcore.ScheduledTask}*/
         renderTask;
 
     /**
@@ -290,7 +290,7 @@ gui.SvgSelectionView = function SvgSelectionView(cursor) {
             grownRect = null,
             currentRect,
             range = doc.createRange(),
-            /**@type{!core.PositionFilter}*/
+            /**@type{!webodfcore.PositionFilter}*/
             rootFilter,
             odfNodeFilter = new odf.OdfNodeFilter(),
             treeWalker;
@@ -650,14 +650,14 @@ gui.SvgSelectionView = function SvgSelectionView(cursor) {
      * @param {function(!Error=)} callback
      */
     this.destroy = function (callback) {
-        core.Async.destroyAll([renderTask.destroy, destroy], callback);
+        webodfcore.Async.destroyAll([renderTask.destroy, destroy], callback);
     };
 
     function init() {
         var editinfons = 'urn:webodf:names:editinfo',
             memberid = cursor.getMemberId();
 
-        renderTask = core.Task.createRedrawTask(rerender);
+        renderTask = webodfcore.Task.createRedrawTask(rerender);
         addOverlay();
         overlay.setAttributeNS(editinfons, 'editinfo:memberid', memberid);
         sizer.classList.add('webodf-virtualSelections');

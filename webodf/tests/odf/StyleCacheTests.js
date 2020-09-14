@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf, NodeFilter, Node, xmldom*/
+/*global runtime, webodfcore, odf, NodeFilter, Node, xmldom*/
 
 /**
  * @constructor
- * @param {!core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {!webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.StyleCacheTests = function StyleTests(runner) {
     "use strict";

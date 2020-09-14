@@ -83,12 +83,12 @@ ops.Document.prototype.unsubscribe = function (eventid, cb) { "use strict"; };
 ops.Document.prototype.getCanvas = function () { "use strict"; };
 /**
  * @param {string|!Node} inputMemberId
- * @return {!core.PositionFilter}
+ * @return {!webodfcore.PositionFilter}
  */
 ops.Document.prototype.createRootFilter = function (inputMemberId) { "use strict"; };
 /**
  * @param {!Node} rootNode
- * @return {!core.PositionIterator}
+ * @return {!webodfcore.PositionIterator}
  */
 ops.Document.prototype.createPositionIterator = function (rootNode) { "use strict"; };
 /**

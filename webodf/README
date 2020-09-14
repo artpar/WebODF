@@ -1,7 +1,7 @@
 This directory contains the javacript code to WebODF as well as applications that use it. The applications are browser applications, commandline applications and unit tests.
 
 lib/
-lib/core/    Parts of WebODF that also work on JavaScript runtimes without a
+lib/webodfcore/    Parts of WebODF that also work on JavaScript runtimes without a
              document window.
 lib/gui/     Parts of WebODF that require a domtree
 

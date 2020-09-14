@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, runtime, gui*/
+/*global webodfcore, runtime, gui*/
 
 /**
  * This class allows handling of 'constraints', which are modelled
@@ -35,7 +35,7 @@ gui.SessionConstraints = function SessionConstraints() {
     "use strict";
 
     var constraints = {},
-        constraintNotifier = new core.EventNotifier();
+        constraintNotifier = new webodfcore.EventNotifier();
 
     /**
      * Register a constraint.

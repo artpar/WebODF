@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime,core,define,require,document,dijit */
+/*global runtime,webodfcore,define,require,document,dijit */
 
 define("webodf/editor/widgets/dialogWidgets/editHyperlinkPane", [
     "dojo",
@@ -32,7 +32,7 @@ define("webodf/editor/widgets/dialogWidgets/editHyperlinkPane", [
     function (dojo, ContentPane, IdMangler) {
         "use strict";
 
-        runtime.loadClass("core.CSSUnits");
+        runtime.loadClass("webodfcore.CSSUnits");
 
         var EditHyperlinkPane = function () {
             var self = this,

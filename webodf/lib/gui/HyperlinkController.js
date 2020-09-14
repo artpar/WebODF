@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, Node, ops, odf */
+/*global runtime, webodfcore, gui, Node, ops, odf */
 
 /**
  * @constructor
- * @implements {core.Destroyable}
- * @implements {core.EventSource}
+ * @implements {webodfcore.Destroyable}
+ * @implements {webodfcore.EventSource}
  * @param {!ops.Session} session
  * @param {!gui.SessionConstraints} sessionConstraints
  * @param {!gui.SessionContext} sessionContext
@@ -43,7 +43,7 @@ gui.HyperlinkController = function HyperlinkController(
 
     var odfUtils = odf.OdfUtils,
         odtDocument = session.getOdtDocument(),
-        eventNotifier = new core.EventNotifier([
+        eventNotifier = new webodfcore.EventNotifier([
             gui.HyperlinkController.enabledChanged
         ]),
         isEnabled = false;

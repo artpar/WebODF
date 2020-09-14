@@ -36,7 +36,7 @@ odf.StepUtils = function StepUtils() {
      * the content element immediately to the left of the step. Will return undefined if there is no content to the left
      * of the step.
      *
-     * @param {!core.StepIterator} stepIterator
+     * @param {!webodfcore.StepIterator} stepIterator
      * @return {!{container: !Node, startOffset: !number, endOffset: !number}|undefined}
      */
     function getContentBounds(stepIterator) {

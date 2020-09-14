@@ -1,61 +1,4 @@
 {
-    "core.Async": [
-    ],
-    "core.Base64": [
-    ],
-    "core.CSSUnits": [
-    ],
-    "core.Cursor": [
-        "core.DomUtils"
-    ],
-    "core.Destroyable": [
-    ],
-    "core.DomUtils": [
-    ],
-    "core.EventNotifier": [
-        "core.EventSource"
-    ],
-    "core.EventSource": [
-    ],
-    "core.EventSubscriptions": [
-        "core.Async",
-        "core.EventNotifier",
-        "core.Task"
-    ],
-    "core.LazyProperty": [
-    ],
-    "core.LoopWatchDog": [
-    ],
-    "core.NodeFilterChain": [
-    ],
-    "core.PositionFilter": [
-        "core.PositionIterator"
-    ],
-    "core.PositionFilterChain": [
-        "core.PositionFilter"
-    ],
-    "core.PositionIterator": [
-    ],
-    "core.ScheduledTask": [
-        "core.Destroyable"
-    ],
-    "core.StepIterator": [
-        "core.PositionFilter",
-        "core.enums"
-    ],
-    "core.Task": [
-        "core.ScheduledTask"
-    ],
-    "core.Utils": [
-    ],
-    "core.Zip": [
-        "core.Base64",
-        "externs.JSZip"
-    ],
-    "core.enums": [
-    ],
-    "core.typedefs": [
-    ],
     "externs.JSZip": [
     ],
     "gui.AnnotationController": [
@@ -68,7 +11,7 @@
         "odf.OdfUtils"
     ],
     "gui.Avatar": [
-        "core.Destroyable"
+        "webodfcore.Destroyable"
     ],
     "gui.BlacklistNamespaceNodeFilter": [
     ],
@@ -90,15 +33,15 @@
     "gui.CommonConstraints": [
     ],
     "gui.DirectFormattingController": [
-        "core.LazyProperty",
         "gui.CommonConstraints",
         "gui.SessionConstraints",
         "gui.SessionContext",
-        "gui.StyleSummary"
+        "gui.StyleSummary",
+        "webodfcore.LazyProperty"
     ],
     "gui.EditInfoHandle": [
-        "core.Destroyable",
-        "core.DomUtils"
+        "webodfcore.Destroyable",
+        "webodfcore.DomUtils"
     ],
     "gui.EditInfoMarker": [
         "gui.EditInfoHandle",
@@ -113,9 +56,9 @@
         "odf.StepUtils"
     ],
     "gui.HyperlinkClickHandler": [
-        "core.Destroyable",
         "gui.KeyboardHandler",
         "odf.OdfUtils",
+        "webodfcore.Destroyable",
         "xmldom.XPath"
     ],
     "gui.HyperlinkController": [
@@ -143,8 +86,8 @@
     "gui.KeyboardHandler": [
     ],
     "gui.LineBoundaryScanner": [
-        "core.typedefs",
-        "gui.VisualStepScanner"
+        "gui.VisualStepScanner",
+        "webodfcore.typedefs"
     ],
     "gui.MetadataController": [
         "ops.Session"
@@ -183,7 +126,7 @@
         "gui.SelectionView"
     ],
     "gui.SessionConstraints": [
-        "core.EventNotifier"
+        "webodfcore.EventNotifier"
     ],
     "gui.SessionContext": [
         "ops.Session"
@@ -218,11 +161,11 @@
         "odf.Formatting"
     ],
     "gui.SvgSelectionView": [
-        "core.Async",
-        "core.Task",
         "gui.SelectionView",
         "odf.OdfNodeFilter",
-        "odf.OdfUtils"
+        "odf.OdfUtils",
+        "webodfcore.Async",
+        "webodfcore.Task"
     ],
     "gui.TextController": [
         "gui.CommonConstraints",
@@ -230,9 +173,9 @@
         "gui.SessionContext"
     ],
     "gui.TrivialUndoManager": [
-        "core.DomUtils",
         "gui.UndoManager",
-        "gui.UndoStateRules"
+        "gui.UndoStateRules",
+        "webodfcore.DomUtils"
     ],
     "gui.UndoManager": [
         "ops.Operation"
@@ -241,14 +184,14 @@
         "ops.Operation"
     ],
     "gui.Viewport": [
-        "core.typedefs"
+        "webodfcore.typedefs"
     ],
     "gui.VisualStepScanner": [
-        "core.StepIterator"
+        "webodfcore.StepIterator"
     ],
     "gui.ZoomHelper": [
-        "core.Destroyable",
-        "core.EventNotifier"
+        "webodfcore.Destroyable",
+        "webodfcore.EventNotifier"
     ],
     "odf.CollapsingRules": [
         "odf.OdfUtils"
@@ -261,41 +204,41 @@
         "odf.OdfUtils"
     ],
     "odf.Formatting": [
-        "core.CSSUnits",
-        "core.Utils",
         "odf.OdfContainer",
-        "odf.OdfUtils"
+        "odf.OdfUtils",
+        "webodfcore.CSSUnits",
+        "webodfcore.Utils"
     ],
     "odf.GraphicProperties": [
         "odf.StyleParseUtils"
     ],
     "odf.ListStylesToCss": [
-        "core.CSSUnits",
         "odf.OdfUtils",
-        "odf.StyleTree"
+        "odf.StyleTree",
+        "webodfcore.CSSUnits"
     ],
     "odf.Namespaces": [
     ],
     "odf.ObjectNameGenerator": [
-        "core.Utils",
-        "odf.OdfContainer"
+        "odf.OdfContainer",
+        "webodfcore.Utils"
     ],
     "odf.OdfCanvas": [
-        "core.Async",
-        "core.Task",
         "gui.AnnotationViewManager",
         "gui.SingleScrollViewport",
         "odf.FontLoader",
         "odf.Formatting",
         "odf.ListStylesToCss",
         "odf.Style2CSS",
-        "ops.Canvas"
+        "ops.Canvas",
+        "webodfcore.Async",
+        "webodfcore.Task"
     ],
     "odf.OdfContainer": [
-        "core.DomUtils",
-        "core.Zip",
         "odf.OdfNodeFilter",
         "odf.StyleInfo",
+        "webodfcore.DomUtils",
+        "webodfcore.Zip",
         "xmldom.LSSerializer"
     ],
     "odf.OdfNodeFilter": [
@@ -305,8 +248,8 @@
         "odf.Namespaces"
     ],
     "odf.OdfUtils": [
-        "core.DomUtils",
-        "odf.OdfSchema"
+        "odf.OdfSchema",
+        "webodfcore.DomUtils"
     ],
     "odf.PageLayoutProperties": [
         "odf.StyleParseUtils"
@@ -315,13 +258,13 @@
         "odf.StyleParseUtils"
     ],
     "odf.StepUtils": [
-        "core.StepIterator"
+        "webodfcore.StepIterator"
     ],
     "odf.Style2CSS": [
-        "core.CSSUnits",
         "odf.OdfUtils",
         "odf.StyleParseUtils",
         "odf.StyleTree",
+        "webodfcore.CSSUnits",
         "xmldom.XPath"
     ],
     "odf.StyleCache": [
@@ -349,9 +292,9 @@
         "xmldom.LSSerializerFilter"
     ],
     "odf.TextStyleApplicator": [
-        "core.LoopWatchDog",
         "odf.Formatting",
-        "odf.ObjectNameGenerator"
+        "odf.ObjectNameGenerator",
+        "webodfcore.LoopWatchDog"
     ],
     "odf.WordBoundaryFilter": [
         "ops.OdtDocument"
@@ -360,8 +303,8 @@
         "gui.ZoomHelper"
     ],
     "ops.Document": [
-        "core.PositionFilter",
-        "ops.Canvas"
+        "ops.Canvas",
+        "webodfcore.PositionFilter"
     ],
     "ops.EditInfo": [
         "ops.OdtDocument"
@@ -369,12 +312,10 @@
     "ops.Member": [
     ],
     "ops.OdtCursor": [
-        "core.Cursor",
-        "ops.Document"
+        "ops.Document",
+        "webodfcore.Cursor"
     ],
     "ops.OdtDocument": [
-        "core.NodeFilterChain",
-        "core.PositionFilterChain",
         "gui.BlacklistNamespaceNodeFilter",
         "gui.OdfTextBodyNodeFilter",
         "odf.OdfCanvas",
@@ -383,13 +324,15 @@
         "ops.OdtCursor",
         "ops.OdtStepsTranslator",
         "ops.Operation",
-        "ops.TextPositionFilter"
+        "ops.TextPositionFilter",
+        "webodfcore.NodeFilterChain",
+        "webodfcore.PositionFilterChain"
     ],
     "ops.OdtStepsTranslator": [
-        "core.PositionFilter",
-        "core.enums",
         "odf.OdfUtils",
-        "ops.StepsCache"
+        "ops.StepsCache",
+        "webodfcore.PositionFilter",
+        "webodfcore.enums"
     ],
     "ops.OpAddAnnotation": [
         "ops.OdtDocument"
@@ -521,16 +464,73 @@
         "ops.TrivialOperationRouter"
     ],
     "ops.StepsCache": [
-        "core.DomUtils",
-        "core.LoopWatchDog",
-        "core.PositionIterator"
+        "webodfcore.DomUtils",
+        "webodfcore.LoopWatchDog",
+        "webodfcore.PositionIterator"
     ],
     "ops.TextPositionFilter": [
-        "core.PositionFilter",
-        "odf.OdfUtils"
+        "odf.OdfUtils",
+        "webodfcore.PositionFilter"
     ],
     "ops.TrivialOperationRouter": [
         "ops.OperationRouter"
+    ],
+    "webodfcore.Async": [
+    ],
+    "webodfcore.Base64": [
+    ],
+    "webodfcore.CSSUnits": [
+    ],
+    "webodfcore.Cursor": [
+        "webodfcore.DomUtils"
+    ],
+    "webodfcore.Destroyable": [
+    ],
+    "webodfcore.DomUtils": [
+    ],
+    "webodfcore.EventNotifier": [
+        "webodfcore.EventSource"
+    ],
+    "webodfcore.EventSource": [
+    ],
+    "webodfcore.EventSubscriptions": [
+        "webodfcore.Async",
+        "webodfcore.EventNotifier",
+        "webodfcore.Task"
+    ],
+    "webodfcore.LazyProperty": [
+    ],
+    "webodfcore.LoopWatchDog": [
+    ],
+    "webodfcore.NodeFilterChain": [
+    ],
+    "webodfcore.PositionFilter": [
+        "webodfcore.PositionIterator"
+    ],
+    "webodfcore.PositionFilterChain": [
+        "webodfcore.PositionFilter"
+    ],
+    "webodfcore.PositionIterator": [
+    ],
+    "webodfcore.ScheduledTask": [
+        "webodfcore.Destroyable"
+    ],
+    "webodfcore.StepIterator": [
+        "webodfcore.PositionFilter",
+        "webodfcore.enums"
+    ],
+    "webodfcore.Task": [
+        "webodfcore.ScheduledTask"
+    ],
+    "webodfcore.Utils": [
+    ],
+    "webodfcore.Zip": [
+        "externs.JSZip",
+        "webodfcore.Base64"
+    ],
+    "webodfcore.enums": [
+    ],
+    "webodfcore.typedefs": [
     ],
     "xmldom.LSSerializer": [
         "xmldom.LSSerializerFilter"

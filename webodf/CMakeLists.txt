@@ -38,15 +38,15 @@ set(EXTERNS_LIST
 string(REPLACE ";" " " EXTERNS "${EXTERNS_LIST}")
 
 set(TESTJSFILES
-    tests/core/UnitTester.js
-    tests/core/ZipTests.js
-    tests/core/Base64Tests.js
-    tests/core/CursorTests.js
-    tests/core/DomUtilsTests.js
-    tests/core/EventSubscriptionsTests.js
-    tests/core/PositionIteratorTests.js
-    tests/core/RuntimeTests.js
-    tests/core/StepIteratorTests.js
+    tests/webodfcore/UnitTester.js
+    tests/webodfcore/ZipTests.js
+    tests/webodfcore/Base64Tests.js
+    tests/webodfcore/CursorTests.js
+    tests/webodfcore/DomUtilsTests.js
+    tests/webodfcore/EventSubscriptionsTests.js
+    tests/webodfcore/PositionIteratorTests.js
+    tests/webodfcore/RuntimeTests.js
+    tests/webodfcore/StepIteratorTests.js
     tests/gui/DirectFormattingControllerTests.js
     tests/gui/GuiStepUtilsTests.js
     tests/gui/MetadataControllerTests.js

@@ -22,17 +22,17 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, Runtime, core, gui, xmldom, RuntimeTests, odf, ops, webodf_css: true*/
+/*global runtime, Runtime, webodfcore, gui, xmldom, RuntimeTests, odf, ops, webodf_css: true*/
 
-runtime.loadClass("core.UnitTester");
-runtime.loadClass("core.Base64Tests");
-runtime.loadClass("core.CursorTests");
-runtime.loadClass("core.DomUtilsTests");
-runtime.loadClass("core.EventSubscriptionsTests");
-runtime.loadClass("core.PositionIteratorTests");
-runtime.loadClass("core.RuntimeTests");
-runtime.loadClass("core.StepIteratorTests");
-runtime.loadClass("core.ZipTests");
+runtime.loadClass("webodfcore.UnitTester");
+runtime.loadClass("webodfcore.Base64Tests");
+runtime.loadClass("webodfcore.CursorTests");
+runtime.loadClass("webodfcore.DomUtilsTests");
+runtime.loadClass("webodfcore.EventSubscriptionsTests");
+runtime.loadClass("webodfcore.PositionIteratorTests");
+runtime.loadClass("webodfcore.RuntimeTests");
+runtime.loadClass("webodfcore.StepIteratorTests");
+runtime.loadClass("webodfcore.ZipTests");
 runtime.loadClass("gui.DirectFormattingControllerTests");
 runtime.loadClass("gui.GuiStepUtilsTests");
 runtime.loadClass("gui.MetadataControllerTests");
@@ -75,19 +75,19 @@ ops.StepsCache.ENABLE_CACHE_VERIFICATION = true;
  * @type {!Array.<Function>}
  */
 var tests = [
-    core.RuntimeTests,
-    core.ZipTests,
-    core.Base64Tests
+    webodfcore.RuntimeTests,
+    webodfcore.ZipTests,
+    webodfcore.Base64Tests
 ];
 
 // add tests depending on runtime with XML parser
 if (runtime.getDOMImplementation() && runtime.parseXML("<a/>").createRange) {
 // TODO: fix test and enable
-//     tests.push(core.CursorTests);
-    tests.push(core.PositionIteratorTests);
-    tests.push(core.DomUtilsTests);
-    tests.push(core.EventSubscriptionsTests);
-    tests.push(core.StepIteratorTests);
+//     tests.push(webodfcore.CursorTests);
+    tests.push(webodfcore.PositionIteratorTests);
+    tests.push(webodfcore.DomUtilsTests);
+    tests.push(webodfcore.EventSubscriptionsTests);
+    tests.push(webodfcore.StepIteratorTests);
     tests.push(gui.DirectFormattingControllerTests);
     tests.push(gui.GuiStepUtilsTests);
     tests.push(gui.UndoStateRulesTests);
@@ -122,7 +122,7 @@ if (runtime.type() === "BrowserRuntime") {
     tests.push(ops.TransformationTests);
 }
 
-var tester = new core.UnitTester();
+var tester = new webodfcore.UnitTester();
 
 /**
  * Recursively runs the passed tests.

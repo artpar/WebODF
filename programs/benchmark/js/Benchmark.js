@@ -22,13 +22,13 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global define, runtime, core, console, odf */
+/*global define, runtime, webodfcore, console, odf */
 
 define(["OdfBenchmarkContext"], function (OdfBenchmarkContext) {
         "use strict";
 
-        runtime.loadClass("core.EventNotifier");
-        runtime.loadClass("core.Task");
+        runtime.loadClass("webodfcore.EventNotifier");
+        runtime.loadClass("webodfcore.Task");
         runtime.loadClass("odf.OdfCanvas");
 
         /**
@@ -38,7 +38,7 @@ define(["OdfBenchmarkContext"], function (OdfBenchmarkContext) {
         function Benchmark(canvasElement) {
             var self = this,
                 context = new OdfBenchmarkContext(),
-                events = new core.EventNotifier(["start", "complete"]),
+                events = new webodfcore.EventNotifier(["start", "complete"]),
                 currentActionIndex,
                 lastProfileAction;
 
@@ -69,7 +69,7 @@ define(["OdfBenchmarkContext"], function (OdfBenchmarkContext) {
                 });
 
                 events.emit("start", {});
-                core.Task.SUPPRESS_MANUAL_PROCESSING = true;
+                webodfcore.Task.SUPPRESS_MANUAL_PROCESSING = true;
                 context.odfCanvas = new odf.OdfCanvas(canvasElement);
                 currentActionIndex = -1;
                 executeNextAction();

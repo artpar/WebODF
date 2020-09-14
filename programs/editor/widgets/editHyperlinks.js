@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global define, require, document, odf, runtime, core, gui */
+/*global define, require, document, odf, runtime, webodfcore, gui */
 
 define("webodf/editor/widgets/editHyperlinks", [
     "webodf/editor/EditorSession",
@@ -36,7 +36,7 @@ define("webodf/editor/widgets/editHyperlinks", [
 
         runtime.loadClass("odf.OdfUtils");
         runtime.loadClass("odf.TextSerializer");
-        runtime.loadClass("core.EventSubscriptions");
+        runtime.loadClass("webodfcore.EventSubscriptions");
 
         var EditHyperlinks = function (callback) {
             var self = this,
@@ -48,7 +48,7 @@ define("webodf/editor/widgets/editHyperlinks", [
                 removeHyperlinkButton,
                 odfUtils = odf.OdfUtils,
                 textSerializer = new odf.TextSerializer(),
-                eventSubscriptions = new core.EventSubscriptions(),
+                eventSubscriptions = new webodfcore.EventSubscriptions(),
                 dialog;
 
             function updateLinkEditorContent() {

@@ -21,10 +21,10 @@
  * @source: http://www.webodf.org/
  * @source: https://github.com/kogmbh/WebODF/
  */
-/*global runtime, Node, window, DOMParser, core, xmldom, NodeFilter, alert,
+/*global runtime, Node, window, DOMParser, webodfcore, xmldom, NodeFilter, alert,
    FileReader*/
-runtime.loadClass("core.Zip");
-runtime.loadClass("core.Base64");
+runtime.loadClass("webodfcore.Zip");
+runtime.loadClass("webodfcore.Base64");
 runtime.loadClass("xmldom.RelaxNG");
 runtime.loadClass("xmldom.RelaxNGParser");
 
@@ -187,7 +187,7 @@ function UnpackJob() {
         });
     }
     function loadZip(input, callback) {
-        var zip = new core.Zip(input.file.path, function (err, zip) {
+        var zip = new webodfcore.Zip(input.file.path, function (err, zip) {
             if (err) {
                 input.errors.unpackErrors.push(err);
                 callback();
@@ -367,7 +367,7 @@ function VersionTestJob() {
 }
 function GetThumbnailJob() {
     "use strict";
-    var base64 = new core.Base64();
+    var base64 = new webodfcore.Base64();
     this.inputpattern = { file: { entries: [] }, errors: {}, mimetype: "" };
     this.outputpattern = { thumbnail: "", errors: { thumbnailErrors: [] } };
     this.run = function (input, callback) {

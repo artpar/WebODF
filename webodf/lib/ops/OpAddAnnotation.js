@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global ops, core, odf, runtime*/
+/*global ops, webodfcore, odf, runtime*/
 
 /**
  * @constructor
@@ -75,7 +75,7 @@ ops.OpAddAnnotation = function OpAddAnnotation() {
         creatorNode.setAttributeNS('urn:webodf:names:editinfo', 'editinfo:memberid', memberid);
         creatorNode.textContent = odtDocument.getMember(memberid).getProperties().fullName;
 
-        // Date.toISOString return the current Dublin Core representation
+        // Date.toISOString return the current Dublin webodfcore representation
         dateNode = doc.createElementNS(odf.Namespaces.dcns, 'dc:date');
         dateNode.appendChild(doc.createTextNode(date.toISOString()));
 

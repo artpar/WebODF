@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf, NodeFilter*/
+/*global runtime, webodfcore, odf, NodeFilter*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.OdfUtilsTests = function OdfUtilsTests(runner) {
     "use strict";
@@ -47,14 +47,14 @@ odf.OdfUtilsTests = function OdfUtilsTests(runner) {
 
     this.setUp = function () {
         t = {
-            testArea : core.UnitTest.provideTestAreaDiv(),
+            testArea : webodfcore.UnitTest.provideTestAreaDiv(),
             ns: namespace
         };
         t.odfUtils = odf.OdfUtils;
     };
     this.tearDown = function () {
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
     /**
      * @param {!string} fontFamilyName
@@ -69,7 +69,7 @@ odf.OdfUtilsTests = function OdfUtilsTests(runner) {
     function createDocument(dom) {
         var fragment;
 
-        fragment = core.UnitTest.createOdtDocument("<office:text>" + dom + "</office:text>", namespace);
+        fragment = webodfcore.UnitTest.createOdtDocument("<office:text>" + dom + "</office:text>", namespace);
         t.testArea.appendChild(fragment.documentElement);
         t.range = t.testArea.ownerDocument.createRange();
         return t.testArea.firstChild.firstChild.childNodes.length === 1

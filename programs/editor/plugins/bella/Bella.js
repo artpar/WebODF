@@ -39,7 +39,7 @@ define("webodf/editor/plugins/bella/Bella", [
 
     /**
      * @constructor
-     * @implements {core.Destroyable}
+     * @implements {webodfcore.Destroyable}
      * @param {!Object=} config Configuration options to pass to fuzzer
      *      automatically generated
      */
@@ -163,7 +163,7 @@ define("webodf/editor/plugins/bella/Bella", [
             }
             /*jslint emptyblock: false*/
             if (scheduledTask) {
-                webodf.core.Async.destroyAll([scheduledTask.destroy], callback || noop);
+                webodf.webodfcore.Async.destroyAll([scheduledTask.destroy], callback || noop);
                 if (reporter) {
                     reporter.destroy();
                     reporter = undefined;
@@ -188,7 +188,7 @@ define("webodf/editor/plugins/bella/Bella", [
             stop();
             state.startedAt = new Date();
             reporter = new SimpleStatusReporter(self, config.statusContainer);
-            scheduledTask = webodf.core.Task.createTimeoutTask(pounceOnComputer, newInterval);
+            scheduledTask = webodf.webodfcore.Task.createTimeoutTask(pounceOnComputer, newInterval);
             scheduledTask.triggerImmediate();
         };
 

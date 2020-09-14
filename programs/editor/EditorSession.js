@@ -22,15 +22,15 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, define, document, core, odf, gui, ops*/
+/*global runtime, define, document, webodfcore, odf, gui, ops*/
 
 define("webodf/editor/EditorSession", [
     "dojo/text!resources/fonts/fonts.css"
 ], function (fontsCSS) { // fontsCSS is retrieved as a string, using dojo's text retrieval AMD plugin
     "use strict";
 
-    runtime.loadClass("core.Async");
-    runtime.loadClass("core.DomUtils");
+    runtime.loadClass("webodfcore.Async");
+    runtime.loadClass("webodfcore.DomUtils");
     runtime.loadClass("odf.OdfUtils");
     runtime.loadClass("ops.OdtDocument");
     runtime.loadClass("ops.OdtStepsTranslator");
@@ -47,14 +47,14 @@ define("webodf/editor/EditorSession", [
     runtime.loadClass("gui.TrivialUndoManager");
     runtime.loadClass("gui.SvgSelectionView");
     runtime.loadClass("gui.SelectionViewManager");
-    runtime.loadClass("core.EventNotifier");
+    runtime.loadClass("webodfcore.EventNotifier");
     runtime.loadClass("gui.ShadowCursor");
     runtime.loadClass("gui.CommonConstraints");
 
     /**
      * Instantiate a new editor session attached to an existing operation session
      * @constructor
-     * @implements {core.EventSource}
+     * @implements {webodfcore.EventSource}
      * @param {!ops.Session} session
      * @param {!string} localMemberId
      * @param {{viewOptions:gui.SessionViewOptions,directParagraphStylingEnabled:boolean,annotationsEnabled:boolean}} config
@@ -71,10 +71,10 @@ define("webodf/editor/EditorSession", [
             textns = odf.Namespaces.textns,
             fontStyles = document.createElement('style'),
             formatting = odtDocument.getFormatting(),
-            domUtils = core.DomUtils,
+            domUtils = webodfcore.DomUtils,
             odfUtils = odf.OdfUtils,
             odfFieldView,
-            eventNotifier = new core.EventNotifier([
+            eventNotifier = new webodfcore.EventNotifier([
                 EditorSession.signalMemberAdded,
                 EditorSession.signalMemberUpdated,
                 EditorSession.signalMemberRemoved,
@@ -89,7 +89,7 @@ define("webodf/editor/EditorSession", [
             shadowCursor = new gui.ShadowCursor(odtDocument),
             sessionConstraints,
             /**@const*/
-            NEXT = core.StepDirection.NEXT;
+            NEXT = webodfcore.StepDirection.NEXT;
 
         /**
          * @return {Array.<!string>}
@@ -584,7 +584,7 @@ define("webodf/editor/EditorSession", [
                     destroy
                 ];
 
-            core.Async.destroyAll(cleanup, callback);
+            webodfcore.Async.destroyAll(cleanup, callback);
         };
 
         function init() {

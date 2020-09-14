@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global define, window, runtime, core*/
+/*global define, window, runtime, webodfcore*/
 
 define("webodf/editor/backend/jsglobal/Server", [], function () {
     "use strict";

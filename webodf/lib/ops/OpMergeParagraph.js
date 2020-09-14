@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global ops, runtime, odf, core, Node, NodeFilter*/
+/*global ops, runtime, odf, webodfcore, Node, NodeFilter*/
 
 /**
  * Merges two adjacent paragraphs together into the first paragraph. The destination paragraph
@@ -46,7 +46,7 @@ ops.OpMergeParagraph = function OpMergeParagraph() {
         /**@type{!number}*/
         destinationStartPosition,
         odfUtils = odf.OdfUtils,
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         /**@const*/
         textns = odf.Namespaces.textns;
 
@@ -156,7 +156,7 @@ ops.OpMergeParagraph = function OpMergeParagraph() {
     /**
      * Discard insignificant whitespace between the start of the paragraph node and the first step in the paragraph
      *
-     * @param {!core.StepIterator} stepIterator
+     * @param {!webodfcore.StepIterator} stepIterator
      * @param {!Element} paragraphElement
      * @return {undefined}
      */
@@ -172,7 +172,7 @@ ops.OpMergeParagraph = function OpMergeParagraph() {
     /**
      * Discard insignificant whitespace between the last step in the paragraph and the end of the paragraph node
      *
-     * @param {!core.StepIterator} stepIterator
+     * @param {!webodfcore.StepIterator} stepIterator
      * @param {!Element} paragraphElement
      * @return {undefined}
      */
@@ -191,7 +191,7 @@ ops.OpMergeParagraph = function OpMergeParagraph() {
      *
      * @param {!ops.OdtDocument} odtDocument
      * @param {!number} steps
-     * @param {!core.StepIterator=} stepIterator
+     * @param {!webodfcore.StepIterator=} stepIterator
      * @return {!Element}
      */
     function getParagraphAtStep(odtDocument, steps, stepIterator) {

@@ -1,4 +1,4 @@
-# Set default behaviour for some text-like files, in case users don't have core.autocrlf set.
+# Set default behaviour for some text-like files, in case users don't have webodfcore.autocrlf set.
 
 
 *.cmake  text eol=native

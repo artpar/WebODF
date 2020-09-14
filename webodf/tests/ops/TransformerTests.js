@@ -22,13 +22,13 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, runtime, core, gui, ops, odf, xmldom*/
+/*global Node, runtime, webodfcore, gui, ops, odf, xmldom*/
 
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 ops.TransformerTests = function TransformerTests(runner) {
     "use strict";
@@ -249,12 +249,12 @@ ops.TransformerTests = function TransformerTests(runner) {
     this.setUp = function () {
         var testarea;
         t = {};
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         t.odfcanvas = new odf.OdfCanvas(testarea);
     };
     this.tearDown = function () {
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
     this.tests = function () {
         var pre = r.resourcePrefix();

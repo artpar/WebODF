@@ -22,13 +22,13 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf, xmldom*/
+/*global runtime, webodfcore, odf, xmldom*/
 
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.OdfContainerTests = function OdfContainerTests(runner) {
     "use strict";
@@ -53,7 +53,7 @@ odf.OdfContainerTests = function OdfContainerTests(runner) {
         xmlFragments.forEach(function(xmlFragment) {
             var doc, rootNode;
 
-            doc = core.UnitTest.createXmlDocument("dummy", xmlFragment, odf.Namespaces.namespaceMap);
+            doc = webodfcore.UnitTest.createXmlDocument("dummy", xmlFragment, odf.Namespaces.namespaceMap);
             rootNode = node.ownerDocument.importNode(doc.documentElement, true);
             while (rootNode.firstChild) {
                 node.appendChild(rootNode.firstChild);
@@ -325,10 +325,10 @@ odf.OdfContainerTests = function OdfContainerTests(runner) {
 
     /*
     function compareZipEntryList(odf1path, odf2path, callback) {
-        var dummy = new core.Zip(odf1path, function (err, z1) {
+        var dummy = new webodfcore.Zip(odf1path, function (err, z1) {
             t.err = err;
             r.shouldBeNull(t, "t.err");
-            dummy = new core.Zip(odf2path, function (err, z2) {
+            dummy = new webodfcore.Zip(odf2path, function (err, z2) {
                 t.err = err;
                 r.shouldBeNull(t, "t.err");
                 t.e1 = z1.getEntries();

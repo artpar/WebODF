@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, odf, runtime, core*/
+/*global Node, odf, runtime, webodfcore*/
 
 /**
  * Class for applying a supplied text style to the given text nodes.
@@ -33,7 +33,7 @@
  */
 odf.TextStyleApplicator = function TextStyleApplicator(objectNameGenerator, formatting, automaticStyles) {
     "use strict";
-    var domUtils = core.DomUtils,
+    var domUtils = webodfcore.DomUtils,
         /**@const*/
         textns = odf.Namespaces.textns,
         /**@const*/
@@ -151,7 +151,7 @@ odf.TextStyleApplicator = function TextStyleApplicator(objectNameGenerator, form
             moveTrailing,
             node,
             nextNode,
-            loopGuard = new core.LoopWatchDog(10000),
+            loopGuard = new webodfcore.LoopWatchDog(10000),
             /**@type{!Array.<!Node>}*/
             styledNodes = [];
 

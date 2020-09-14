@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf*/
+/*global runtime, webodfcore, odf*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.StyleInfoTests = function StyleInfoTests(runner) {
     "use strict";
@@ -45,7 +45,7 @@ odf.StyleInfoTests = function StyleInfoTests(runner) {
         t = {};
     };
     function createDocument(dom) {
-        return core.UnitTest.createXmlDocument("dummy", dom, namespace).documentElement.firstChild;
+        return webodfcore.UnitTest.createXmlDocument("dummy", dom, namespace).documentElement.firstChild;
 
     }
     function determineStylesForNode() {

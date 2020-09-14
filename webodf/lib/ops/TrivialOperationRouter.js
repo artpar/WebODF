@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global ops, runtime, core*/
+/*global ops, runtime, webodfcore*/
 
 /*
  * route the operations.
@@ -39,7 +39,7 @@
 ops.TrivialOperationRouter = function TrivialOperationRouter() {
     "use strict";
 
-    var events = new core.EventNotifier([
+    var events = new webodfcore.EventNotifier([
             ops.OperationRouter.signalProcessingBatchStart,
             ops.OperationRouter.signalProcessingBatchEnd
         ]),

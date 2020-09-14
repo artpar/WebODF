@@ -581,7 +581,7 @@ function Main(cmakeListPath) {
      * @return {undefined}
      */
     this.checkJSFiles = function (contents) {
-        var core = {},
+        var webodfcore = {},
             jslint,
             path,
             license,
@@ -593,15 +593,15 @@ function Main(cmakeListPath) {
             // files for which the license is not checked
             licenseExceptions = [
                 "lib/HeaderCompiled.js",
-                "lib/core/JSLint.js",
+                "lib/webodfcore/JSLint.js",
                 "lib/externs/JSZip.js",
                 "../programs/editor/plugins/bella/seedrandom.js"].map(pathModule.normalize),
             commonLicense;
         // load JSLint
         /*jslint evil: true*/
-        eval(contents[pathModule.normalize("lib/core/JSLint.js")]);
+        eval(contents[pathModule.normalize("lib/webodfcore/JSLint.js")]);
         /*jslint evil: false*/
-        jslint = new core.JSLint().JSLINT;
+        jslint = new webodfcore.JSLint().JSLINT;
         for (path in contents) {
             if (contents.hasOwnProperty(path)
                     && typeof contents[path] === "string") {
@@ -661,7 +661,7 @@ function main(f) {
         // remove files that should not go in the manifest.json files
         delete contents[pathModule.normalize("lib/HeaderCompiled.js")];
         delete contents[pathModule.normalize("lib/runtime.js")];
-        delete contents[pathModule.normalize("lib/core/JSLint.js")];
+        delete contents[pathModule.normalize("lib/webodfcore/JSLint.js")];
         delete contents[pathModule.normalize("tests/tests.js")];
         delete contents[pathModule.normalize("tests/testruntimeadaption.js")];
         Object.keys(contents).forEach(function (name) {

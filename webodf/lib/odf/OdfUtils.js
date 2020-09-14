@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, runtime, odf, NodeFilter, core*/
+/*global Node, runtime, odf, NodeFilter, webodfcore*/
 
 /**
  * @constructor
@@ -39,7 +39,7 @@ odf.OdfUtilsImpl = function OdfUtilsImpl() {
         /**@const
            @type{!string}*/
         xlinkns = odf.Namespaces.xlinkns,
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         // only add odf element namespaces here.
         // Namespaces solely used for attributes are excluded. eg. fo, xlink & xml
         odfNodeNamespaceMap = [

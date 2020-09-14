@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui*/
+/*global runtime, webodfcore, gui*/
 
 (function () {
     "use strict";
@@ -68,7 +68,7 @@
      * on the sizer element. It also provides some methods to set, get, and
      * subscribe to the current zoom level.
      * @constructor
-     * @implements {core.Destroyable}
+     * @implements {webodfcore.Destroyable}
      */
     gui.ZoomHelper = function () {
         var /**@type{!HTMLElement}*/
@@ -88,7 +88,7 @@
             offsetParent,
             /**@type{!HTMLElement}*/
             parentElement,
-            events = new core.EventNotifier([gui.ZoomHelper.signalZoomChanged]),
+            events = new webodfcore.EventNotifier([gui.ZoomHelper.signalZoomChanged]),
             /**@const*/
             gestures = {
                 NONE: 0,

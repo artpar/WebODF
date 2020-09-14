@@ -22,11 +22,11 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global gui, runtime, core, ops, odf*/
+/*global gui, runtime, webodfcore, ops, odf*/
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!ops.Session} session
  * @param {!string} inputMemberId
  */
@@ -34,7 +34,7 @@ gui.MetadataController = function MetadataController(session, inputMemberId) {
     "use strict";
 
     var odtDocument = session.getOdtDocument(),
-        eventNotifier = new core.EventNotifier([gui.MetadataController.signalMetadataChanged]),
+        eventNotifier = new webodfcore.EventNotifier([gui.MetadataController.signalMetadataChanged]),
         /** @const @type {!Array.<!string>} */
         readonlyProperties = [
             "dc:creator",

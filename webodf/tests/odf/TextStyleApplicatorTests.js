@@ -22,19 +22,19 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, NodeFilter*/
+/*global runtime, webodfcore, gui, odf, NodeFilter*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.TextStyleApplicatorTests = function TextStyleApplicatorTests(runner) {
     "use strict";
     var t,
         r = runner,
         odfUtils = odf.OdfUtils,
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         namespace = {
             "text": "urn:oasis:names:tc:opendocument:xmlns:text:1.0",
             "office": "urn:oasis:names:tc:opendocument:xmlns:office:1.0",
@@ -45,17 +45,17 @@ odf.TextStyleApplicatorTests = function TextStyleApplicatorTests(runner) {
     this.setUp = function () {
         t = {
             formatting: new odf.Formatting(),
-            testArea : core.UnitTest.provideTestAreaDiv(),
+            testArea : webodfcore.UnitTest.provideTestAreaDiv(),
             ns: namespace
         };
     };
     this.tearDown = function () {
         t.range.detach();
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
     function parseXML(data) {
-        return core.UnitTest.createOdtDocument(data, namespace).documentElement;
+        return webodfcore.UnitTest.createOdtDocument(data, namespace).documentElement;
     }
     function createDocument(dom) {
         var xml = "";

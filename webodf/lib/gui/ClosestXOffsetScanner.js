@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, gui*/
+/*global webodfcore, gui*/
 
 /**
  * Finds the closest step to the specified offset, but comparing the left and right edges of the

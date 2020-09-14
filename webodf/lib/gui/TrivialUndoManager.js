@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global gui,ops,core,runtime*/
+/*global gui,ops,webodfcore,runtime*/
 
 (function() {
 "use strict";
@@ -126,7 +126,7 @@ function StateTransition(undoRules, initialOps, editOpsPossible) {
 gui.TrivialUndoManager = function TrivialUndoManager(defaultRules) {
     var self = this,
         cursorns = 'urn:webodf:names:cursor',
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         /**@type{?Element}*/
         initialDoc,
         /**@type{!StateTransition}*/
@@ -142,7 +142,7 @@ gui.TrivialUndoManager = function TrivialUndoManager(defaultRules) {
         undoStateTransitions = [],
         /**@type{!Array.<!StateTransition>}*/
         redoStateTransitions = [],
-        eventNotifier = new core.EventNotifier([
+        eventNotifier = new webodfcore.EventNotifier([
             gui.UndoManager.signalUndoStackChanged,
             gui.UndoManager.signalUndoStateCreated,
             gui.UndoManager.signalUndoStateModified,

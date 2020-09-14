@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global define, runtime, core, ops*/
+/*global define, runtime, webodfcore, ops*/
 
 define("webodf/editor/backend/pullbox/OperationRouter", [], function () {
     "use strict";
@@ -38,7 +38,7 @@ define("webodf/editor/backend/pullbox/OperationRouter", [], function () {
         EVENT_HASSESSIONHOSTCONNECTIONCHANGED =   "hasSessionHostConnectionChanged";
 
     runtime.loadClass("ops.OperationTransformer");
-    runtime.loadClass("core.EventNotifier");
+    runtime.loadClass("webodfcore.EventNotifier");
 
     /**
      * route operations in a networked collaborative manner.
@@ -84,7 +84,7 @@ define("webodf/editor/backend/pullbox/OperationRouter", [], function () {
             hasLocalUnsyncedOps = false,
             /**@type{!boolean}*/
             hasSessionHostConnection = true,
-            eventNotifier = new core.EventNotifier([
+            eventNotifier = new webodfcore.EventNotifier([
                 EVENT_BEFORESAVETOFILE,
                 EVENT_SAVEDTOFILE,
                 EVENT_HASLOCALUNSYNCEDOPERATIONSCHANGED,

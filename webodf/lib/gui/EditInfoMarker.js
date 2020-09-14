@@ -22,11 +22,11 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, gui, runtime*/
+/*global webodfcore, gui, runtime*/
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!ops.EditInfo} editInfo  marker takes ownership
  * @param {boolean} initialVisibility Sets the initial edit info marker visibility
  */

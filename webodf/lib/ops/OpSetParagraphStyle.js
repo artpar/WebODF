@@ -57,7 +57,7 @@ ops.OpSetParagraphStyle = function OpSetParagraphStyle() {
      *
      * @param {!ops.OdtDocument} odtDocument
      * @param {!Node} paragraphNode
-     * @param {!core.PositionIterator} iterator
+     * @param {!webodfcore.PositionIterator} iterator
      * @return {!boolean}
      */
     function isFirstStep(odtDocument, paragraphNode, iterator) {

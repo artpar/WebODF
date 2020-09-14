@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, NodeFilter*/
+/*global runtime, webodfcore, gui, odf, NodeFilter*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 gui.StyleSummaryTests = function StyleSummaryTests(runner) {
     "use strict";
@@ -46,13 +46,13 @@ gui.StyleSummaryTests = function StyleSummaryTests(runner) {
     this.setUp = function () {
         t = {
             formatting: new odf.Formatting(),
-            testArea : core.UnitTest.provideTestAreaDiv(),
+            testArea : webodfcore.UnitTest.provideTestAreaDiv(),
             ns: namespace
         };
     };
     this.tearDown = function () {
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
     function createDocument(dom) {
         var xml, container, fragment;
@@ -108,7 +108,7 @@ gui.StyleSummaryTests = function StyleSummaryTests(runner) {
 
         xml += "<office:text>" + dom + "</office:text>";
 
-        fragment = core.UnitTest.createOdtDocument(xml, namespace);
+        fragment = webodfcore.UnitTest.createOdtDocument(xml, namespace);
         t.testArea.appendChild(fragment.documentElement);
         container = { rootElement : {
             styles : t.testArea.firstChild.childNodes[0],

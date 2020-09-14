@@ -22,14 +22,14 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime,core,define,require,dijit */
+/*global runtime,webodfcore,define,require,dijit */
 
 define("webodf/editor/widgets/dialogWidgets/alignmentPane", [
     "webodf/editor/widgets/dialogWidgets/idMangler"],
 function (IdMangler) {
     "use strict";
 
-    runtime.loadClass("core.CSSUnits");
+    runtime.loadClass("webodfcore.CSSUnits");
 
     var AlignmentPane = function (callback) {
         var self = this,
@@ -48,7 +48,7 @@ function (IdMangler) {
 
         this.setStyle = function (styleName) {
             var style = editorSession.getParagraphStyleAttributes(styleName)['style:paragraph-properties'],
-                cssUnits = new core.CSSUnits(),
+                cssUnits = new webodfcore.CSSUnits(),
                 s_topMargin,
                 s_bottomMargin,
                 s_leftMargin,

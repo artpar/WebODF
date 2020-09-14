@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, odf, ops, Node, NodeFilter, xmldom*/
+/*global runtime, webodfcore, gui, odf, ops, Node, NodeFilter, xmldom*/
 
 /**
  * @constructor
- * @param {core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 gui.ImageControllerTests = function ImageControllerTests(runner) {
     "use strict";
@@ -107,7 +107,7 @@ gui.ImageControllerTests = function ImageControllerTests(runner) {
             node,
             mockCanvas;
 
-        doc = core.UnitTest.createOdtDocument(
+        doc = webodfcore.UnitTest.createOdtDocument(
             "<office:text>" + xml + "</office:text>",
             odf.Namespaces.namespaceMap);
         node = /**@type{!Element}*/(domDocument.importNode(doc.documentElement, true));
@@ -145,11 +145,11 @@ gui.ImageControllerTests = function ImageControllerTests(runner) {
     }
 
     this.setUp = function () {
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         t = { doc: testarea.ownerDocument };
     };
     this.tearDown = function () {
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
         t = {};
     };
 

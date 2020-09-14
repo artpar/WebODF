@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global Node, document, runtime, gui, ops, core */
+/*global Node, document, runtime, gui, ops, webodfcore */
 
 /**
  * @constructor
@@ -70,7 +70,7 @@ gui.SessionViewOptions = function () {
      * be matched with the memberids for which CSS is generated, to generate the same CSS
      * for shadow cursors.
      * @constructor
-     * @implements {core.Destroyable}
+     * @implements {webodfcore.Destroyable}
      * @param {!gui.SessionViewOptions} viewOptions
      * @param {string} localMemberId
      * @param {!ops.Session} session
@@ -90,7 +90,7 @@ gui.SessionViewOptions = function () {
             odtDocument,
             /**@type{!odf.OdfCanvas}*/
             odfCanvas,
-            /**@type{!core.ScheduledTask}*/
+            /**@type{!webodfcore.ScheduledTask}*/
             highlightRefreshTask,
             showEditInfoMarkers = configOption(viewOptions.editInfoMarkersInitiallyVisible, true),
             showCaretAvatars = configOption(viewOptions.caretAvatarsInitiallyVisible, true),
@@ -421,7 +421,7 @@ gui.SessionViewOptions = function () {
 
             // TODO: Move such handling into AnnotationViewManager
             if (annotationConstraintStyles.hasChildNodes()) {
-                core.DomUtils.removeAllChildNodes(annotationConstraintStyles);
+                webodfcore.DomUtils.removeAllChildNodes(annotationConstraintStyles);
             }
 
             if (sessionConstraints.getState(gui.CommonConstraints.EDIT.ANNOTATIONS.ONLY_DELETE_OWN) === true) {
@@ -484,7 +484,7 @@ gui.SessionViewOptions = function () {
         this.destroy = function (callback) {
             var cleanup = [highlightRefreshTask.destroy, destroy];
             odtDocument.unsubscribe(ops.OdtDocument.signalAnnotationAdded, onAnnotationAdded);
-            core.Async.destroyAll(cleanup, callback);
+            webodfcore.Async.destroyAll(cleanup, callback);
         };
 
         function init() {
@@ -515,7 +515,7 @@ gui.SessionViewOptions = function () {
             annotationConstraintStyles = newStyleSheet();
             processConstraints();
 
-            highlightRefreshTask = core.Task.createRedrawTask(refreshHighlights);
+            highlightRefreshTask = webodfcore.Task.createRedrawTask(refreshHighlights);
         }
         init();
     };

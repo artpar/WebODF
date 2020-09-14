@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, gui, core, ops, Node, odf*/
+/*global runtime, gui, webodfcore, ops, Node, odf*/
 
 (function () {
     "use strict";
@@ -37,7 +37,7 @@
      * text as if it occurred via a normal composition event
      *
      * @constructor
-     * @implements {core.Destroyable}
+     * @implements {webodfcore.Destroyable}
      * @param {!gui.EventManager} eventManager
      */
     function DetectSafariCompositionError(eventManager) {
@@ -93,7 +93,7 @@
      * - On Chrome, using Option+char will include the following keypress in the composition event
      *
      * @constructor
-     * @implements {core.Destroyable}
+     * @implements {webodfcore.Destroyable}
      * @param {!string} inputMemberId
      * @param {!gui.EventManager} eventManager
      */
@@ -106,12 +106,12 @@
             doc = /**@type{!Document}*/(eventTrap.ownerDocument),
             /**@type{!Element}*/
             compositionElement,
-            /**@type{!core.ScheduledTask}*/
+            /**@type{!webodfcore.ScheduledTask}*/
             processUpdates,
             pendingEvent = false,
             /**@type{string}*/
             pendingData = "",
-            events = new core.EventNotifier([gui.InputMethodEditor.signalCompositionStart,
+            events = new webodfcore.EventNotifier([gui.InputMethodEditor.signalCompositionStart,
                                                 gui.InputMethodEditor.signalCompositionEnd]),
             lastCompositionData,
             /**@type{!odf.TextSerializer}*/
@@ -295,7 +295,7 @@
             eventManager.unsubscribe('keypress', flushEvent);
             eventManager.unsubscribe('focus', synchronizeWindowSelection);
 
-            core.Async.destroyAll(cleanup, callback);
+            webodfcore.Async.destroyAll(cleanup, callback);
         };
 
         function init() {
@@ -322,7 +322,7 @@
             compositionElement = doc.createElement('span');
             compositionElement.setAttribute('id', 'composer');
 
-            processUpdates = core.Task.createTimeoutTask(synchronizeWindowSelection, 1);
+            processUpdates = webodfcore.Task.createTimeoutTask(synchronizeWindowSelection, 1);
             cleanup.push(processUpdates.destroy);
         }
 

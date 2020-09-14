@@ -22,11 +22,11 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, ops, runtime*/
+/*global webodfcore, ops, runtime*/
 
 /**
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!Element} container
  * @param {!ops.OdtDocument} odtDocument
  */

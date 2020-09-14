@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, odf, core, document, xmldom*/
+/*global runtime, odf, webodfcore, document, xmldom*/
 /*jslint sub: true*/
 
 
@@ -30,7 +30,7 @@
     "use strict";
     var xpath = xmldom.XPath,
         odfUtils = odf.OdfUtils,
-        base64 = new core.Base64();
+        base64 = new webodfcore.Base64();
 
     /**
      * @param {!Element} fontFaceDecls

@@ -22,13 +22,13 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, gui, ops*/
+/*global runtime, webodfcore, gui, ops*/
 
 /**
  * The Selection View Manager is responsible for managing SelectionView objects
  * and attaching/detaching them to cursors.
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!function(new:gui.SelectionView, !(ops.OdtCursor|gui.ShadowCursor))} SelectionView
  */
 gui.SelectionViewManager = function SelectionViewManager(SelectionView) {

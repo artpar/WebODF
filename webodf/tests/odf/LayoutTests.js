@@ -22,12 +22,12 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, odf, NodeFilter, Node, xmldom*/
+/*global runtime, webodfcore, odf, NodeFilter, Node, xmldom*/
 
 /**
  * @constructor
- * @param {!core.UnitTestRunner} runner
- * @implements {core.UnitTest}
+ * @param {!webodfcore.UnitTestRunner} runner
+ * @implements {webodfcore.UnitTest}
  */
 odf.LayoutTests = function LayoutTests(runner) {
     "use strict";
@@ -301,13 +301,13 @@ odf.LayoutTests = function LayoutTests(runner) {
     this.setUp = function () {
         var testarea;
         t = {};
-        testarea = core.UnitTest.provideTestAreaDiv();
+        testarea = webodfcore.UnitTest.provideTestAreaDiv();
         t.odfCanvas = new odf.OdfCanvas(testarea);
     };
     this.tearDown = function () {
         t.odfCanvas.destroy(function () { return; });
         t = {};
-        core.UnitTest.cleanupTestAreaDiv();
+        webodfcore.UnitTest.cleanupTestAreaDiv();
     };
     this.tests = function () {
         return [];

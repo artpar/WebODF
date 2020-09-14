@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global core, gui, odf, ops, runtime, Node*/
+/*global webodfcore, gui, odf, ops, runtime, Node*/
 
 /**
  * Class that represents a caret in a document.
@@ -31,7 +31,7 @@
  * Blinking is done by switching the color of the border from transparent to
  * the member color and back.
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!ops.OdtCursor} cursor
  * @param {!gui.Viewport} viewport
  * @param {boolean} avatarInitiallyVisible Sets the initial visibility of the caret's avatar
@@ -58,13 +58,13 @@ gui.Caret = function Caret(cursor, viewport, avatarInitiallyVisible, blinkOnRang
         /**@type{!Range}*/
         caretSizerRange,
         canvas = cursor.getDocument().getCanvas(),
-        domUtils = core.DomUtils,
+        domUtils = webodfcore.DomUtils,
         guiStepUtils = new gui.GuiStepUtils(),
-        /**@type{!core.StepIterator}*/
+        /**@type{!webodfcore.StepIterator}*/
         stepIterator,
-        /**@type{!core.ScheduledTask}*/
+        /**@type{!webodfcore.ScheduledTask}*/
         redrawTask,
-        /**@type{!core.ScheduledTask}*/
+        /**@type{!webodfcore.ScheduledTask}*/
         blinkTask,
         /**@type{boolean}*/
         shouldResetBlink = false,
@@ -464,7 +464,7 @@ gui.Caret = function Caret(cursor, viewport, avatarInitiallyVisible, blinkOnRang
      */
     this.destroy = function (callback) {
         var cleanup = [redrawTask.destroy, blinkTask.destroy, avatar.destroy, destroy];
-        core.Async.destroyAll(cleanup, callback);
+        webodfcore.Async.destroyAll(cleanup, callback);
     };
 
     function init() {
@@ -494,8 +494,8 @@ gui.Caret = function Caret(cursor, viewport, avatarInitiallyVisible, blinkOnRang
 
         stepIterator = odtDocument.createStepIterator(cursor.getNode(), 0, positionFilters, odtDocument.getRootNode());
 
-        redrawTask = core.Task.createRedrawTask(updateCaret);
-        blinkTask = core.Task.createTimeoutTask(blinkCaret, BLINK_PERIOD_MS);
+        redrawTask = webodfcore.Task.createRedrawTask(updateCaret);
+        blinkTask = webodfcore.Task.createTimeoutTask(blinkCaret, BLINK_PERIOD_MS);
         redrawTask.triggerImmediate();
     }
     init();

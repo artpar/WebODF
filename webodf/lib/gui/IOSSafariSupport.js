@@ -22,13 +22,13 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, gui, core*/
+/*global runtime, gui, webodfcore*/
 
 /**
  * Drop-in workaround for several bugs/quirks
  * found in iOS Safari.
  * @constructor
- * @implements {core.Destroyable}
+ * @implements {webodfcore.Destroyable}
  * @param {!gui.EventManager} eventManager
  */
 gui.IOSSafariSupport = function (eventManager) {

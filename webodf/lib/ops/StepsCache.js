@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime, core, ops, Node*/
+/*global runtime, webodfcore, ops, Node*/
 
 (function() {
     "use strict";
@@ -67,7 +67,7 @@
      * @constructor
      * @param {!Element} rootElement
      * @param {!number} bucketSize  Minimum number of steps between cache points
-     * @param {!function(!number, !core.PositionIterator):undefined} restoreBookmarkPosition Fine-tune the iterator position after
+     * @param {!function(!number, !webodfcore.PositionIterator):undefined} restoreBookmarkPosition Fine-tune the iterator position after
      *      it is set to a specific bookmark location.
      */
     ops.StepsCache = function StepsCache(rootElement, bucketSize, restoreBookmarkPosition) {
@@ -79,7 +79,7 @@
             stepToDomPoint = {},
             /**@type{!Object.<!string, !ops.StepsCache.Bookmark>}*/
             nodeToBookmark = {},
-            domUtils = core.DomUtils,
+            domUtils = webodfcore.DomUtils,
             /**@type{!RootBookmark}*/
             basePoint,
             /**@type{!number|undefined}*/
@@ -112,7 +112,7 @@
             this.previousBookmark = null;
 
             /**
-             * @param {!core.PositionIterator} iterator
+             * @param {!webodfcore.PositionIterator} iterator
              * @return {undefined}
              */
             this.setIteratorPosition = function(iterator) {
@@ -139,7 +139,7 @@
             this.previousBookmark = null;
 
             /**
-             * @param {!core.PositionIterator} iterator
+             * @param {!webodfcore.PositionIterator} iterator
              * @return {undefined}
              */
             this.setIteratorPosition = function (iterator) {
@@ -188,7 +188,7 @@
                 previousBookmark,
                 nextBookmark,
                 documentPosition,
-                loopCheck = new core.LoopWatchDog(0, 100000),
+                loopCheck = new webodfcore.LoopWatchDog(0, 100000),
                 /**@type{!Object.<!string, !string>}*/
                 stepToDomPointNodeIds = {};
 
@@ -337,7 +337,7 @@
         function getClosestBookmark(steps) {
             var cacheBucket,
                 cachePoint,
-                loopGuard = new core.LoopWatchDog(0, 10000);
+                loopGuard = new webodfcore.LoopWatchDog(0, 10000);
 
             // This function promises to return an undamaged bookmark at all times.
             // Easiest way to ensure this is don't allow requests to damaged sections
@@ -540,7 +540,7 @@
          * Set the iterator to the closest known position before or at the requested step, returning the number of steps
          * from position 0.
          * @param {!number} steps
-         * @param {!core.PositionIterator} iterator
+         * @param {!webodfcore.PositionIterator} iterator
          * @return {!number} Corresponding step for the current iterator position
          */
         this.setToClosestStep = function (steps, iterator) {
@@ -583,7 +583,7 @@
          * of steps from position 0.
          * @param {!Node} node
          * @param {!number} offset
-         * @param {!core.PositionIterator} iterator
+         * @param {!webodfcore.PositionIterator} iterator
          * @return {!number} Corresponding step for the current iterator position
          */
         this.setToClosestDomPoint = function (node, offset, iterator) {
@@ -687,7 +687,7 @@
     ops.StepsCache.Bookmark.prototype.nextBookmark;
 
     /**
-     * @param {!core.PositionIterator} iterator
+     * @param {!webodfcore.PositionIterator} iterator
      * @return {undefined}
      */
     ops.StepsCache.Bookmark.prototype.setIteratorPosition = function(iterator) { };

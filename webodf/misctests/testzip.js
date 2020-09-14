@@ -22,15 +22,15 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global runtime core*/
+/*global runtime webodfcore*/
 
-runtime.loadClass("core.Zip");
-runtime.loadClass("core.Async");
+runtime.loadClass("webodfcore.Zip");
+runtime.loadClass("webodfcore.Async");
 
 
 /**
- * @param {!core.Zip.ZipEntry} entry
- * @param {!core.Zip} zip
+ * @param {!webodfcore.Zip.ZipEntry} entry
+ * @param {!webodfcore.Zip} zip
  * @param {function(?string):undefined} callback
  * @return {undefined}
  */
@@ -46,8 +46,8 @@ function copyEntry(entry, zip, callback) {
 }
 
 /**
- * @param {!core.Zip} zipa
- * @param {!core.Zip} zipb
+ * @param {!webodfcore.Zip} zipa
+ * @param {!webodfcore.Zip} zipb
  * @param {function(?string):undefined} callback
  * @return {undefined}
  */
@@ -85,7 +85,7 @@ function compareZips(zipa, zipb, callback) {
         }
     }
     // compare the data in the entries
-    core.Async.forEach(entriesa, function (entry, callback) {
+    webodfcore.Async.forEach(entriesa, function (entry, callback) {
         entry.load(function (err, dataa) {
             if (err) {
                 callback(err);
@@ -115,7 +115,7 @@ function compareZips(zipa, zipb, callback) {
 }
 
 function testZip(filepatha, callback) {
-    var zipa = new core.Zip(filepatha, function (err, zipa) {
+    var zipa = new webodfcore.Zip(filepatha, function (err, zipa) {
         if (err) {
             runtime.log(err);
             runtime.exit(1);
@@ -123,11 +123,11 @@ function testZip(filepatha, callback) {
         }
         // open a new zip file and copy all entries from zipa to zipb
         var filepathb = "tmp323.zip",
-            zipb = new core.Zip(filepathb, null),
+            zipb = new webodfcore.Zip(filepathb, null),
             entries = zipa.getEntries(),
             i,
             entriesDone = 0;
-        core.Async.forEach(entries, function (entry, callback) {
+        webodfcore.Async.forEach(entries, function (entry, callback) {
             copyEntry(entry, zipb, callback);
         }, function (err) {
             if (err) {
@@ -139,7 +139,7 @@ function testZip(filepatha, callback) {
                     callback(err);
                     return;
                 }
-                zipb = new core.Zip(filepathb, function (err, zipb) {
+                zipb = new webodfcore.Zip(filepathb, function (err, zipb) {
                     if (err) {
                         callback(err);
                         return;

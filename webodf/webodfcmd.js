@@ -22,7 +22,7 @@
  * @source: https://github.com/kogmbh/WebODF/
  */
 
-/*global document, runtime, core, odf*/
+/*global document, runtime, webodfcore, odf*/
 
 runtime.loadClass("odf.CommandLineTools");
 
