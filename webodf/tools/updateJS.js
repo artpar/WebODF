@@ -543,7 +543,9 @@ function Main(cmakeListPath) {
                 // The file has no errors, save it so it will be skipped at the
                 // next run.
                 mkdir(pathModule.dirname(lpath));
-                fs.writeFile(lpath, contents);
+                fs.writeFile(lpath, contents, function(err, result) {
+                    if(err) console.log( "runJSLint(), error:", err );
+                  });
             } else {
                 errors = jslint.errors;
                 for (i = 0; i < errors.length && errors[i]; i += 1) {
